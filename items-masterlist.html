@@ -99,15 +99,35 @@ placeholder="Item Code">
 id="itemName"
 placeholder="Item Name">
 
+<div class="category-box">
+
 <select id="category">
 
-<option value="">Select Category</option>
-
-<option>Beverages</option>
-<option>Raw Materials</option>
-<option>Packaging</option>
+<option value="">
+Select Category
+</option>
 
 </select>
+
+<div class="category-add">
+
+<input
+type="text"
+id="newCategory"
+placeholder="Add Category">
+
+<button
+type="button"
+class="add-category-btn"
+onclick="addCategory()">
+
+Add
+
+</button>
+
+</div>
+
+</div>
 
 <input type="text"
 id="unit"
