@@ -1,43 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>PAPPRITO Inventory Login</title>
 
-<link rel="stylesheet" href="css/style.css">
+<!-- FONT AWESOME -->
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+<style>
+
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+/* BODY */
+
+body{
+height:100vh;
+background:#dfeef2;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+/* CONTAINER */
+
+.login-container{
+width:100%;
+max-width:420px;
+}
+
+/* LOGIN CARD */
+
+.login-box{
+background:white;
+padding:35px;
+border-radius:25px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* LOGO */
+
+.logo{
+text-align:center;
+margin-bottom:30px;
+}
+
+.logo .icon{
+width:90px;
+height:90px;
+background:linear-gradient(to bottom,#d40000,#900000);
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:auto;
+margin-bottom:15px;
+}
+
+.logo .icon i{
+font-size:40px;
+color:#ffd700;
+}
+
+.logo h1{
+font-size:32px;
+color:#c40000;
+margin-bottom:5px;
+}
+
+.logo p{
+color:#666;
+font-size:15px;
+}
+
+/* INPUTS */
+
+.input-group{
+margin-bottom:20px;
+}
+
+.input-group label{
+display:block;
+margin-bottom:8px;
+font-weight:600;
+color:#444;
+}
+
+.input-box{
+display:flex;
+align-items:center;
+background:#f5f5f5;
+border-radius:12px;
+padding:0 15px;
+border:1px solid #ddd;
+transition:0.3s;
+}
+
+.input-box:focus-within{
+border-color:#c40000;
+background:white;
+}
+
+.input-box i{
+color:#c40000;
+font-size:18px;
+margin-right:10px;
+}
+
+.input-box input{
+width:100%;
+padding:15px 0;
+border:none;
+outline:none;
+background:none;
+font-size:15px;
+}
+
+/* BUTTON */
+
+.login-btn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+background:linear-gradient(to right,#d40000,#900000);
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.login-btn:hover{
+opacity:0.9;
+transform:translateY(-2px);
+}
+
+/* FOOTER */
+
+.footer{
+margin-top:20px;
+text-align:center;
+font-size:14px;
+color:#777;
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+.login-box{
+padding:25px;
+border-radius:20px;
+}
+
+.logo h1{
+font-size:26px;
+}
+
+.logo .icon{
+width:75px;
+height:75px;
+}
+
+.logo .icon i{
+font-size:32px;
+}
+
+.login-btn{
+padding:14px;
+font-size:15px;
+}
+
+}
+
+</style>
+
 </head>
 <body>
+
+<!-- LOGIN CONTAINER -->
 
 <div class="login-container">
 
 <div class="login-box">
 
+<!-- LOGO -->
+
+<div class="logo">
+
+<div class="icon">
+
+<i class="fa-solid fa-warehouse"></i>
+
+</div>
+
 <h1>PAPPRITO</h1>
-<p>Inventory Management System</p>
+
+<p>Restaurant Inventory Management System</p>
+
+</div>
+
+<!-- FORM -->
+
+<form action="dashboard.html">
 
 <div class="input-group">
-<i class="fa fa-user"></i>
-<input type="text" id="username" placeholder="Username">
+
+<label>Username</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-user"></i>
+
+<input
+type="text"
+placeholder="Enter Username"
+required>
+
+</div>
+
 </div>
 
 <div class="input-group">
-<i class="fa fa-lock"></i>
-<input type="password" id="password" placeholder="Password">
+
+<label>Password</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+placeholder="Enter Password"
+required>
+
 </div>
 
-<button onclick="login()">LOGIN</button>
+</div>
+
+<button
+type="submit"
+class="login-btn">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+Login
+
+</button>
+
+</form>
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+© 2026 PAPPRITO Inventory System
 
 </div>
 
 </div>
 
-<script src="js/app.js"></script>
+</div>
 
 </body>
 </html>
