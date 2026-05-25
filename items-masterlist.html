@@ -3,14 +3,16 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Items Masterlist</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet"
+href="css/style.css">
 
 </head>
 <body>
@@ -20,45 +22,78 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 <div class="sidebar">
 
 <div class="logo">
+
 <h1>PAPPRITO</h1>
 <p>Inventory System</p>
+
 </div>
 
 <ul class="menu">
 
 <li>
+
 <a href="dashboard.html">
+
 <i class="fa fa-home"></i>
-Dashboard
+<span>Dashboard</span>
+
 </a>
+
 </li>
 
 <li class="active">
+
 <a href="items-masterlist.html">
+
 <i class="fa fa-boxes-stacked"></i>
-Items Masterlist
+<span>Items Masterlist</span>
+
 </a>
+
 </li>
 
 <li>
+
+<a href="categories.html">
+
+<i class="fa fa-layer-group"></i>
+<span>Categories</span>
+
+</a>
+
+</li>
+
+<li>
+
 <a href="stock-in.html">
+
 <i class="fa fa-arrow-down"></i>
-Stock In
+<span>Stock In</span>
+
 </a>
+
 </li>
 
 <li>
+
 <a href="stock-out.html">
+
 <i class="fa fa-arrow-up"></i>
-Stock Out
+<span>Stock Out</span>
+
 </a>
+
 </li>
 
 <li>
+
 <a href="reports.html">
+
 <i class="fa fa-chart-line"></i>
-Reports
+<span>Reports</span>
+
 </a>
+
 </li>
 
 </ul>
@@ -69,13 +104,17 @@ Reports
 
 <div class="main">
 
+<!-- TOPBAR -->
+
 <div class="topbar">
 
 <h1>Items Masterlist</h1>
 
 <div class="admin">
+
 <i class="fa fa-user"></i>
 Admin
+
 </div>
 
 </div>
@@ -85,21 +124,23 @@ Admin
 <div class="form-box">
 
 <div class="form-title">
+
 <i class="fa fa-box"></i>
 Add New Item
+
 </div>
 
 <div class="form-grid">
 
-<input type="text"
+<input
+type="text"
 id="itemCode"
 placeholder="Item Code">
 
-<input type="text"
+<input
+type="text"
 id="itemName"
 placeholder="Item Name">
-
-<div class="category-box">
 
 <select id="category">
 
@@ -109,43 +150,28 @@ Select Category
 
 </select>
 
-<div class="category-add">
-
 <input
 type="text"
-id="newCategory"
-placeholder="Add Category">
-
-<button
-type="button"
-class="add-category-btn"
-onclick="addCategory()">
-
-Add
-
-</button>
-
-</div>
-
-</div>
-
-<input type="text"
 id="unit"
 placeholder="Unit">
 
-<input type="number"
+<input
+type="number"
 id="stock"
 placeholder="Beginning Stock">
 
-<input type="number"
+<input
+type="number"
 id="cost"
 placeholder="Cost Price">
 
-<input type="number"
+<input
+type="number"
 id="selling"
 placeholder="Selling Price">
 
-<input type="text"
+<input
+type="text"
 id="supplier"
 placeholder="Supplier">
 
@@ -166,7 +192,8 @@ Save Item
 
 <div class="search">
 
-<input type="text"
+<input
+type="text"
 id="searchInput"
 placeholder="Search Item..."
 onkeyup="searchItem()">
@@ -204,30 +231,7 @@ onkeyup="searchItem()">
 </table>
 
 </div>
-<br><br>
 
-<div class="table-container">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Categories</th>
-<th>Actions</th>
-
-</tr>
-
-</thead>
-
-<tbody id="categoryTable">
-
-</tbody>
-
-</table>
-
-</div>
 </div>
 
 <script src="js/app.js"></script>
