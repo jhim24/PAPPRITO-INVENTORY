@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PAPPRITO Items Masterlist</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#dfeef2;
+display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:260px;
+height:100vh;
+background:linear-gradient(to bottom,#c40000,#8b0000);
+color:white;
+padding:20px;
+position:fixed;
+}
+
+.logo{
+text-align:center;
+margin-bottom:40px;
+}
+
+.logo h1{
+color:#ffd700;
+font-size:32px;
+}
+
+.logo p{
+font-size:14px;
+}
+
+.menu{
+list-style:none;
+}
+
+.menu li{
+padding:15px;
+margin-bottom:10px;
+border-radius:10px;
+cursor:pointer;
+display:flex;
+align-items:center;
+gap:10px;
+transition:.3s;
+}
+
+.menu li:hover{
+background:#ffd700;
+color:black;
+}
+
+.active{
+background:#ffd700;
+color:black;
+}
+
+/* MAIN */
+
+.main{
+margin-left:260px;
+width:100%;
+padding:25px;
+}
+
+/* TOPBAR */
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.topbar h1{
+color:#c40000;
+}
+
+.admin{
+background:white;
+padding:10px 20px;
+border-radius:10px;
+font-weight:bold;
+}
+
+/* FORM */
+
+.form-box{
+background:#f8f5e9;
+padding:20px;
+border-radius:15px;
+border:2px solid #e5c76b;
+margin-bottom:25px;
+}
+
+.form-title{
+font-size:25px;
+margin-bottom:20px;
+color:#c40000;
+font-weight:bold;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.form-grid input,
+.form-grid select{
+padding:15px;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:15px;
+outline:none;
+}
+
+.save-btn{
+background:#c40000;
+color:white;
+border:none;
+padding:15px;
+border-radius:10px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.save-btn:hover{
+background:#900000;
+}
+
+/* SEARCH */
+
+.search-section{
+display:flex;
+gap:15px;
+margin-bottom:20px;
+}
+
+.search-section input,
+.search-section select{
+padding:15px;
+border:none;
+border-radius:10px;
+font-size:15px;
+width:250px;
+}
+
+/* TABLE */
+
+.table-container{
+background:white;
+border-radius:15px;
+overflow:hidden;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+thead{
+background:#c40000;
+color:white;
+}
+
+th,td{
+padding:15px;
+text-align:left;
+border-bottom:1px solid #ddd;
+}
+
+tbody tr:hover{
+background:#f5f5f5;
+}
+
+.stock{
+color:green;
+font-weight:bold;
+}
+
+.action-btn{
+padding:8px 12px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:14px;
+margin-right:5px;
+}
+
+.edit{
+background:#ffd700;
+}
+
+.delete{
+background:#c40000;
+color:white;
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="logo">
+<h1>PAPPRITO</h1>
+<p>Inventory System</p>
+</div>
+
+<ul class="menu">
+
+<li>
+<i class="fa fa-home"></i>
+Dashboard
+</li>
+
+<li class="active">
+<i class="fa fa-box"></i>
+Items Masterlist
+</li>
+
+<li>
+<i class="fa fa-arrow-down"></i>
+Stock In
+</li>
+
+<li>
+<i class="fa fa-arrow-up"></i>
+Stock Out
+</li>
+
+<li>
+<i class="fa fa-chart-line"></i>
+Reports
+</li>
+
+<li>
+<i class="fa fa-right-from-bracket"></i>
+Logout
+</li>
+
+</ul>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<div class="topbar">
+
+<h1>Items Masterlist</h1>
+
+<div class="admin">
+<i class="fa fa-user"></i>
+Admin
+</div>
+
+</div>
+
+<!-- FORM -->
+
+<div class="form-box">
+
+<div class="form-title">
+<i class="fa fa-box"></i>
+Add New Item
+</div>
+
+<div class="form-grid">
+
+<input type="text" placeholder="Item Code">
+
+<input type="text" placeholder="Item Name">
+
+<select>
+<option>Select Category</option>
+<option>Beverages</option>
+<option>Raw Materials</option>
+<option>Packaging</option>
+</select>
+
+<input type="text" placeholder="Unit">
+
+<input type="number" placeholder="Beginning Stock">
+
+<input type="number" placeholder="Reorder Level">
+
+<input type="text" placeholder="Supplier">
+
+<input type="number" placeholder="Cost Per Unit">
+
+<input type="number" placeholder="Selling Price">
+
+<input type="text" placeholder="Storage Location">
+
+<button class="save-btn">
+<i class="fa fa-floppy-disk"></i>
+Save Item
+</button>
+
+</div>
+
+</div>
+
+<!-- SEARCH -->
+
+<div class="search-section">
+
+<input type="text" placeholder="Search Item...">
+
+<select>
+<option>All Categories</option>
+<option>Beverages</option>
+<option>Raw Materials</option>
+<option>Packaging</option>
+</select>
+
+</div>
+
+<!-- TABLE -->
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Code</th>
+<th>Item Name</th>
+<th>Category</th>
+<th>Unit</th>
+<th>Current Stock</th>
+<th>Reorder</th>
+<th>Supplier</th>
+<th>Cost</th>
+<th>Actions</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>0001</td>
+<td>Coffee Beans</td>
+<td>Beverages</td>
+<td>KG</td>
+<td class="stock">500</td>
+<td>50</td>
+<td>ABC Supplier</td>
+<td>₱350</td>
+<td>
+<button class="action-btn edit">Edit</button>
+<button class="action-btn delete">Delete</button>
+</td>
+</tr>
+
+<tr>
+<td>0002</td>
+<td>Plastic Cup 8oz</td>
+<td>Packaging</td>
+<td>PCS</td>
+<td class="stock">300</td>
+<td>100</td>
+<td>Cup Supplier</td>
+<td>₱2</td>
+<td>
+<button class="action-btn edit">Edit</button>
+<button class="action-btn delete">Delete</button>
+</td>
+</tr>
+
+<tr>
+<td>0003</td>
+<td>Milk</td>
+<td>Raw Materials</td>
+<td>PCS</td>
+<td class="stock">200</td>
+<td>30</td>
+<td>Dairy Supplier</td>
+<td>₱95</td>
+<td>
+<button class="action-btn edit">Edit</button>
+<button class="action-btn delete">Delete</button>
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>
