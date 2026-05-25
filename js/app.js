@@ -292,3 +292,155 @@ ${status}
 });
 
 }
+// =========================
+// CATEGORY SYSTEM
+// =========================
+
+document.addEventListener(
+"DOMContentLoaded",
+loadCategories
+);
+
+// =========================
+// ADD CATEGORY
+// =========================
+
+function addCategory(){
+
+let newCategory =
+document.getElementById("newCategory").value;
+
+if(newCategory === ""){
+
+alert("Enter category name");
+return;
+
+}
+
+let categories =
+JSON.parse(localStorage.getItem("categories")) || [];
+
+// CHECK DUPLICATE
+
+if(categories.includes(newCategory)){
+
+alert("Category already exists");
+return;
+
+}
+
+categories.push(newCategory);
+
+localStorage.setItem(
+"categories",
+JSON.stringify(categories)
+);
+
+document.getElementById(
+"newCategory"
+).value = "";
+
+loadCategories();
+
+alert("Category Added");
+
+}
+
+// =========================
+// LOAD CATEGORY
+// =========================
+
+function loadCategories(){
+
+let categories =
+JSON.parse(localStorage.getItem("categories")) || [];
+
+let dropdown =
+document.getElementById("category");
+
+let table =
+document.getElementById("categoryTable");
+
+// DROPDOWN
+
+if(dropdown){
+
+dropdown.innerHTML = `
+<option value="">
+Select Category
+</option>
+`;
+
+categories.forEach(category=>{
+
+dropdown.innerHTML += `
+
+<option value="${category}">
+${category}
+</option>
+
+`;
+
+});
+
+}
+
+// TABLE
+
+if(table){
+
+table.innerHTML = "";
+
+categories.forEach((category,index)=>{
+
+table.innerHTML += `
+
+<tr>
+
+<td>${category}</td>
+
+<td>
+
+<button
+class="action-btn delete"
+onclick="deleteCategory(${index})">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+}
+
+}
+
+// =========================
+// DELETE CATEGORY
+// =========================
+
+function deleteCategory(index){
+
+let categories =
+JSON.parse(localStorage.getItem("categories")) || [];
+
+if(confirm("Delete category?")){
+
+categories.splice(index,1);
+
+localStorage.setItem(
+"categories",
+JSON.stringify(categories)
+);
+
+loadCategories();
+
+}
+
+}
