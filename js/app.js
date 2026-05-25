@@ -1,38 +1,52 @@
-// =========================
-// LOAD ALL DATA
-// =========================
+// ============================
+// MOBILE SIDEBAR
+// ============================
 
-document.addEventListener("DOMContentLoaded", () => {
+function toggleSidebar(){
 
-loadItems();
-loadDashboard();
-loadReports();
+document
+.querySelector(".sidebar")
+.classList.toggle("activeSidebar");
 
-});
+}
 
-// =========================
-// SAVE ITEM
-// =========================
+// ============================
+// RAW MATERIALS
+// ============================
 
-function saveItem(){
+let rawMaterials =
+JSON.parse(localStorage.getItem("rawMaterials")) || [];
 
-let itemCode = document.getElementById("itemCode").value;
-let itemName = document.getElementById("itemName").value;
-let category = document.getElementById("category").value;
-let unit = document.getElementById("unit").value;
-let stock = document.getElementById("stock").value;
-let cost = document.getElementById("cost").value;
-let selling = document.getElementById("selling").value;
-let supplier = document.getElementById("supplier").value;
+function saveRawMaterial(){
+
+let code =
+document.getElementById("materialCode").value;
+
+let name =
+document.getElementById("materialName").value;
+
+let category =
+document.getElementById("materialCategory").value;
+
+let unit =
+document.getElementById("materialUnit").value;
+
+let stock =
+document.getElementById("materialStock").value;
+
+let cost =
+document.getElementById("materialCost").value;
+
+let supplier =
+document.getElementById("materialSupplier").value;
 
 if(
-itemCode === "" ||
-itemName === "" ||
+code === "" ||
+name === "" ||
 category === "" ||
 unit === "" ||
 stock === "" ||
 cost === "" ||
-selling === "" ||
 supplier === ""
 ){
 
@@ -41,67 +55,77 @@ return;
 
 }
 
-let items = JSON.parse(localStorage.getItem("items")) || [];
+rawMaterials.push({
 
-items.push({
-
-itemCode,
-itemName,
+code,
+name,
 category,
 unit,
 stock,
 cost,
-selling,
 supplier
 
 });
 
-localStorage.setItem("items", JSON.stringify(items));
+localStorage.setItem(
+"rawMaterials",
+JSON.stringify(rawMaterials)
+);
 
-alert("Item Saved Successfully");
+alert("Raw Material Saved");
 
-clearForm();
+loadRawMaterials();
 
-loadItems();
-loadDashboard();
-loadReports();
+clearRawMaterialForm();
 
 }
 
-// =========================
-// LOAD ITEMS
-// =========================
+// ============================
+// LOAD RAW MATERIALS
+// ============================
 
-function loadItems(){
+function loadRawMaterials(){
 
-let items = JSON.parse(localStorage.getItem("items")) || [];
-
-let table = document.getElementById("itemTable");
+let table =
+document.getElementById("rawMaterialTable");
 
 if(!table) return;
 
 table.innerHTML = "";
 
-items.forEach((item,index)=>{
+rawMaterials.forEach((item,index)=>{
+
+let status =
+item.stock <= 5
+? "Low"
+: "Good";
+
+let statusClass =
+item.stock <= 5
+? "low"
+: "good";
 
 table.innerHTML += `
 
 <tr>
 
-<td>${item.itemCode}</td>
-<td>${item.itemName}</td>
+<td>${item.code}</td>
+<td>${item.name}</td>
 <td>${item.category}</td>
 <td>${item.unit}</td>
 <td>${item.stock}</td>
 <td>₱${item.cost}</td>
-<td>₱${item.selling}</td>
 <td>${item.supplier}</td>
+
+<td class="${statusClass}">
+${status}
+</td>
 
 <td>
 
 <button
 class="action-btn edit"
-onclick="editItem(${index})">
+onclick="editRawMaterial(${index})">
 
 Edit
 
@@ -109,7 +133,7 @@ Edit
 
 <button
 class="action-btn delete"
-onclick="deleteItem(${index})">
+onclick="deleteRawMaterial(${index})">
 
 Delete
 
@@ -125,285 +149,157 @@ Delete
 
 }
 
-// =========================
-// DELETE ITEM
-// =========================
+// ============================
+// DELETE RAW MATERIAL
+// ============================
 
-function deleteItem(index){
-
-let items = JSON.parse(localStorage.getItem("items")) || [];
+function deleteRawMaterial(index){
 
 if(confirm("Delete this item?")){
 
-items.splice(index,1);
+rawMaterials.splice(index,1);
 
-localStorage.setItem("items", JSON.stringify(items));
+localStorage.setItem(
+"rawMaterials",
+JSON.stringify(rawMaterials)
+);
 
-loadItems();
-loadDashboard();
-loadReports();
-
-}
-
-}
-
-// =========================
-// EDIT ITEM
-// =========================
-
-function editItem(index){
-
-let items = JSON.parse(localStorage.getItem("items")) || [];
-
-document.getElementById("itemCode").value = items[index].itemCode;
-document.getElementById("itemName").value = items[index].itemName;
-document.getElementById("category").value = items[index].category;
-document.getElementById("unit").value = items[index].unit;
-document.getElementById("stock").value = items[index].stock;
-document.getElementById("cost").value = items[index].cost;
-document.getElementById("selling").value = items[index].selling;
-document.getElementById("supplier").value = items[index].supplier;
-
-deleteItem(index);
+loadRawMaterials();
 
 }
 
-// =========================
+}
+
+// ============================
+// EDIT RAW MATERIAL
+// ============================
+
+function editRawMaterial(index){
+
+let item = rawMaterials[index];
+
+document.getElementById("materialCode").value =
+item.code;
+
+document.getElementById("materialName").value =
+item.name;
+
+document.getElementById("materialCategory").value =
+item.category;
+
+document.getElementById("materialUnit").value =
+item.unit;
+
+document.getElementById("materialStock").value =
+item.stock;
+
+document.getElementById("materialCost").value =
+item.cost;
+
+document.getElementById("materialSupplier").value =
+item.supplier;
+
+deleteRawMaterial(index);
+
+}
+
+// ============================
 // CLEAR FORM
-// =========================
+// ============================
 
-function clearForm(){
+function clearRawMaterialForm(){
 
-document.getElementById("itemCode").value = "";
-document.getElementById("itemName").value = "";
-document.getElementById("category").value = "";
-document.getElementById("unit").value = "";
-document.getElementById("stock").value = "";
-document.getElementById("cost").value = "";
-document.getElementById("selling").value = "";
-document.getElementById("supplier").value = "";
+document.getElementById("materialCode").value = "";
+document.getElementById("materialName").value = "";
+document.getElementById("materialCategory").value = "";
+document.getElementById("materialUnit").value = "";
+document.getElementById("materialStock").value = "";
+document.getElementById("materialCost").value = "";
+document.getElementById("materialSupplier").value = "";
 
 }
 
-// =========================
-// SEARCH ITEM
-// =========================
+// ============================
+// SEARCH RAW MATERIAL
+// ============================
 
-function searchItem(){
+function searchRawMaterial(){
 
 let input =
-document.getElementById("searchInput").value.toLowerCase();
+document
+.getElementById("searchRaw")
+.value
+.toLowerCase();
 
 let rows =
-document.querySelectorAll("#itemTable tr");
+document.querySelectorAll(
+"#rawMaterialTable tr"
+);
 
 rows.forEach(row=>{
 
-let text = row.innerText.toLowerCase();
+let text =
+row.innerText.toLowerCase();
 
 row.style.display =
-text.includes(input) ? "" : "none";
+text.includes(input)
+? ""
+: "none";
 
 });
 
 }
 
-// =========================
-// DASHBOARD
-// =========================
+// ============================
+// FINISHED PRODUCTS
+// ============================
 
-function loadDashboard(){
+let finishedProducts =
+JSON.parse(
+localStorage.getItem("finishedProducts")
+) || [];
 
-let items = JSON.parse(localStorage.getItem("items")) || [];
-
-let totalProducts =
-document.getElementById("totalProducts");
-
-if(totalProducts){
-
-totalProducts.innerText = items.length;
-
-}
-
-let totalStock = 0;
-
-items.forEach(item=>{
-
-totalStock += Number(item.stock);
-
-});
-
-let totalStocks =
-document.getElementById("totalStocks");
-
-if(totalStocks){
-
-totalStocks.innerText = totalStock;
-
-}
-
-}
-
-// =========================
-// REPORTS
-// =========================
-
-function loadReports(){
-
-let items = JSON.parse(localStorage.getItem("items")) || [];
-
-let reportTable =
-document.getElementById("reportTable");
-
-if(!reportTable) return;
-
-reportTable.innerHTML = "";
-
-items.forEach(item=>{
-
-let status =
-item.stock <= 20
-? "Low Stock"
-: "Good";
-
-let statusClass =
-item.stock <= 20
-? "low"
-: "good";
-
-reportTable.innerHTML += `
-
-<tr>
-
-<td>${item.itemName}</td>
-<td>${item.category}</td>
-<td>${item.stock}</td>
-
-<td class="${statusClass}">
-${status}
-</td>
-
-<td>${item.supplier}</td>
-
-</tr>
-
-`;
-
-});
-
-}
-// =========================
-// CATEGORY SYSTEM
-// =========================
-
-document.addEventListener(
-"DOMContentLoaded",
-loadCategories
-);
-
-// =========================
-// ADD CATEGORY
-// =========================
-
-function addCategory(){
-
-let newCategory =
-document.getElementById("newCategory").value;
-
-if(newCategory === ""){
-
-alert("Enter category name");
-return;
-
-}
-
-let categories =
-JSON.parse(localStorage.getItem("categories")) || [];
-
-// CHECK DUPLICATE
-
-if(categories.includes(newCategory)){
-
-alert("Category already exists");
-return;
-
-}
-
-categories.push(newCategory);
-
-localStorage.setItem(
-"categories",
-JSON.stringify(categories)
-);
-
-document.getElementById(
-"newCategory"
-).value = "";
-
-loadCategories();
-
-alert("Category Added");
-
-}
-
-// =========================
-// LOAD CATEGORY
-// =========================
-
-function loadCategories(){
-
-let categories =
-JSON.parse(localStorage.getItem("categories")) || [];
-
-let dropdown =
-document.getElementById("category");
+function loadFinishedProducts(){
 
 let table =
-document.getElementById("categoryTable");
+document.getElementById("finishedTable");
 
-// DROPDOWN
-
-if(dropdown){
-
-dropdown.innerHTML = `
-<option value="">
-Select Category
-</option>
-`;
-
-categories.forEach(category=>{
-
-dropdown.innerHTML += `
-
-<option value="${category}">
-${category}
-</option>
-
-`;
-
-});
-
-}
-
-// TABLE
-
-if(table){
+if(!table) return;
 
 table.innerHTML = "";
 
-categories.forEach((category,index)=>{
+finishedProducts.forEach((item,index)=>{
+
+let status =
+item.available <= 10
+? "Low"
+: "Available";
+
+let statusClass =
+item.available <= 10
+? "low"
+: "good";
 
 table.innerHTML += `
 
 <tr>
 
-<td>${category}</td>
+<td>${item.code}</td>
+<td>${item.name}</td>
+<td>${item.category}</td>
+<td>${item.available}</td>
+<td>₱${item.price}</td>
+<td>${item.batch}</td>
+
+<td class="${statusClass}">
+${status}
+</td>
 
 <td>
 
 <button
 class="action-btn delete"
-onclick="deleteCategory(${index})">
+onclick="deleteFinished(${index})">
 
 Delete
 
@@ -419,28 +315,381 @@ Delete
 
 }
 
-}
+// ============================
+// DELETE FINISHED PRODUCT
+// ============================
 
-// =========================
-// DELETE CATEGORY
-// =========================
+function deleteFinished(index){
 
-function deleteCategory(index){
-
-let categories =
-JSON.parse(localStorage.getItem("categories")) || [];
-
-if(confirm("Delete category?")){
-
-categories.splice(index,1);
+finishedProducts.splice(index,1);
 
 localStorage.setItem(
-"categories",
-JSON.stringify(categories)
+"finishedProducts",
+JSON.stringify(finishedProducts)
 );
 
-loadCategories();
+loadFinishedProducts();
+
+}
+
+// ============================
+// PRODUCTION
+// ============================
+
+let productions =
+JSON.parse(
+localStorage.getItem("productions")
+) || [];
+
+function saveProduction(){
+
+let prodNo =
+document.getElementById("prodNo").value;
+
+let rawMaterial =
+document.getElementById("prodRawMaterial").value;
+
+let quantity =
+document.getElementById("prodQty").value;
+
+let recipe =
+document.getElementById("prodRecipe").value;
+
+let finishedProduct =
+document.getElementById("prodFinished").value;
+
+// COMPUTE OUTPUT
+
+let grams =
+Number(quantity) * 1000;
+
+let output =
+Math.floor(grams / recipe);
+
+// FIND RAW MATERIAL
+
+let raw =
+rawMaterials.find(
+item => item.name === rawMaterial
+);
+
+if(!raw){
+
+alert("Raw material not found");
+return;
+
+}
+
+// CHECK STOCK
+
+if(Number(quantity) > Number(raw.stock)){
+
+alert("Not enough stock");
+return;
+
+}
+
+// DEDUCT RAW MATERIAL
+
+raw.stock =
+Number(raw.stock) - Number(quantity);
+
+// SAVE RAW MATERIAL UPDATE
+
+localStorage.setItem(
+"rawMaterials",
+JSON.stringify(rawMaterials)
+);
+
+// SAVE PRODUCTION
+
+productions.push({
+
+prodNo,
+rawMaterial,
+quantity,
+recipe,
+finishedProduct,
+output
+
+});
+
+localStorage.setItem(
+"productions",
+JSON.stringify(productions)
+);
+
+// SAVE FINISHED PRODUCT
+
+finishedProducts.push({
+
+code:"FP-"+Date.now(),
+
+name:finishedProduct,
+
+category:"Finished Product",
+
+available:output,
+
+price:0,
+
+batch:prodNo
+
+});
+
+localStorage.setItem(
+"finishedProducts",
+JSON.stringify(finishedProducts)
+);
+
+alert("Production Saved");
+
+loadProductions();
+loadRawMaterials();
+loadFinishedProducts();
+
+clearProductionForm();
+
+}
+
+// ============================
+// LOAD PRODUCTIONS
+// ============================
+
+function loadProductions(){
+
+let table =
+document.getElementById("productionTable");
+
+if(!table) return;
+
+table.innerHTML = "";
+
+productions.forEach(prod=>{
+
+table.innerHTML += `
+
+<tr>
+
+<td>${prod.prodNo}</td>
+<td>${prod.rawMaterial}</td>
+<td>${prod.quantity}KG</td>
+<td>${prod.recipe}g/order</td>
+<td>${prod.finishedProduct}</td>
+<td>${prod.output} Orders</td>
+<td class="good">Completed</td>
+
+</tr>
+
+`;
+
+});
+
+}
+
+// ============================
+// CLEAR PRODUCTION FORM
+// ============================
+
+function clearProductionForm(){
+
+document.getElementById("prodNo").value = "";
+document.getElementById("prodRawMaterial").value = "";
+document.getElementById("prodQty").value = "";
+document.getElementById("prodRecipe").value = "";
+document.getElementById("prodFinished").value = "";
+
+}
+
+// ============================
+// SALES
+// ============================
+
+let sales =
+JSON.parse(
+localStorage.getItem("sales")
+) || [];
+
+function saveSale(){
+
+let receipt =
+document.getElementById("saleReceipt").value;
+
+let product =
+document.getElementById("saleProduct").value;
+
+let qty =
+document.getElementById("saleQty").value;
+
+let price =
+document.getElementById("salePrice").value;
+
+let cashier =
+document.getElementById("saleCashier").value;
+
+let finished =
+finishedProducts.find(
+item => item.name === product
+);
+
+if(!finished){
+
+alert("Product not found");
+return;
+
+}
+
+// CHECK STOCK
+
+if(Number(qty) > Number(finished.available)){
+
+alert("Not enough available orders");
+return;
+
+}
+
+// DEDUCT PRODUCT
+
+finished.available =
+Number(finished.available) - Number(qty);
+
+localStorage.setItem(
+"finishedProducts",
+JSON.stringify(finishedProducts)
+);
+
+// TOTAL
+
+let total =
+Number(qty) * Number(price);
+
+// SAVE SALE
+
+sales.push({
+
+receipt,
+product,
+qty,
+price,
+total,
+cashier
+
+});
+
+localStorage.setItem(
+"sales",
+JSON.stringify(sales)
+);
+
+alert("Sale Saved");
+
+loadSales();
+loadFinishedProducts();
+
+clearSalesForm();
+
+}
+
+// ============================
+// LOAD SALES
+// ============================
+
+function loadSales(){
+
+let table =
+document.getElementById("salesTable");
+
+if(!table) return;
+
+table.innerHTML = "";
+
+sales.forEach(sale=>{
+
+table.innerHTML += `
+
+<tr>
+
+<td>${sale.receipt}</td>
+<td>${sale.product}</td>
+<td>${sale.qty}</td>
+<td>₱${sale.price}</td>
+<td>₱${sale.total}</td>
+<td>${sale.cashier}</td>
+<td class="good">Paid</td>
+
+</tr>
+
+`;
+
+});
+
+}
+
+// ============================
+// CLEAR SALES FORM
+// ============================
+
+function clearSalesForm(){
+
+document.getElementById("saleReceipt").value = "";
+document.getElementById("saleProduct").value = "";
+document.getElementById("saleQty").value = "";
+document.getElementById("salePrice").value = "";
+document.getElementById("saleCashier").value = "";
+
+}
+
+// ============================
+// DASHBOARD COUNTS
+// ============================
+
+function loadDashboardCounts(){
+
+let rawCount =
+document.getElementById("rawCount");
+
+if(rawCount){
+
+rawCount.innerText =
+rawMaterials.length;
+
+}
+
+let productionCount =
+document.getElementById("productionCount");
+
+if(productionCount){
+
+productionCount.innerText =
+productions.length;
+
+}
+
+let salesCount =
+document.getElementById("salesCount");
+
+if(salesCount){
+
+salesCount.innerText =
+sales.length;
 
 }
 
 }
+
+// ============================
+// AUTO LOAD
+// ============================
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+
+loadRawMaterials();
+loadFinishedProducts();
+loadProductions();
+loadSales();
+loadDashboardCounts();
+
+}
+);
