@@ -3,316 +3,25 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Sales</title>
-
-<!-- FONT AWESOME -->
+<title>Sales Module</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<style>
-
-/* RESET */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
-
-/* BODY */
-
-body{
-background:#dfeef2;
-display:flex;
-min-height:100vh;
-}
-
-/* SIDEBAR */
-
-.sidebar{
-width:260px;
-background:linear-gradient(to bottom,#d40000,#900000);
-color:white;
-padding:20px;
-position:fixed;
-height:100%;
-overflow:auto;
-}
-
-/* LOGO */
-
-.logo{
-text-align:center;
-margin-bottom:40px;
-}
-
-.logo .icon{
-width:80px;
-height:80px;
-background:white;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-margin:auto;
-margin-bottom:15px;
-}
-
-.logo .icon i{
-font-size:35px;
-color:#c40000;
-}
-
-.logo h1{
-font-size:30px;
-color:#ffd700;
-}
-
-.logo p{
-font-size:14px;
-color:#eee;
-}
-
-/* MENU */
-
-.menu{
-list-style:none;
-}
-
-.menu li{
-margin-bottom:10px;
-border-radius:12px;
-overflow:hidden;
-transition:0.3s;
-}
-
-.menu li a{
-display:flex;
-align-items:center;
-gap:12px;
-padding:15px;
-text-decoration:none;
-color:white;
-font-size:15px;
-}
-
-.menu li:hover{
-background:#ffd700;
-}
-
-.menu li:hover a{
-color:black;
-}
-
-.active{
-background:#ffd700;
-}
-
-.active a{
-color:black !important;
-}
-
-/* MAIN */
-
-.main{
-margin-left:260px;
-width:100%;
-padding:25px;
-}
-
-/* TOPBAR */
-
-.topbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:25px;
-flex-wrap:wrap;
-gap:15px;
-}
-
-.topbar h1{
-font-size:32px;
-color:#c40000;
-}
-
-.admin{
-background:white;
-padding:10px 18px;
-border-radius:12px;
-font-weight:bold;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* CARDS */
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-margin-bottom:25px;
-}
-
-.card{
-background:white;
-padding:25px;
-border-radius:20px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-.card i{
-font-size:35px;
-color:#c40000;
-margin-bottom:15px;
-}
-
-.card h2{
-font-size:30px;
-margin-bottom:10px;
-}
-
-.card p{
-color:#666;
-}
-
-/* FORM */
-
-.form-box{
-background:white;
-padding:25px;
-border-radius:20px;
-margin-bottom:25px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-.form-title{
-font-size:24px;
-font-weight:bold;
-margin-bottom:20px;
-color:#c40000;
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-/* GRID */
-
-.form-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
-}
-
-.form-grid input,
-.form-grid select{
-padding:15px;
-border-radius:12px;
-border:1px solid #ccc;
-outline:none;
-font-size:15px;
-}
-
-/* BUTTON */
-
-.save-btn{
-background:linear-gradient(to right,#d40000,#900000);
-color:white;
-border:none;
-padding:15px;
-border-radius:12px;
-cursor:pointer;
-font-size:15px;
-font-weight:bold;
-}
-
-/* TABLE */
-
-.table-container{
-background:white;
-border-radius:20px;
-overflow:auto;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-min-width:1000px;
-}
-
-thead{
-background:#c40000;
-color:white;
-}
-
-th{
-padding:16px;
-text-align:left;
-}
-
-td{
-padding:16px;
-border-bottom:1px solid #eee;
-}
-
-tbody tr:hover{
-background:#fafafa;
-}
-
-/* STATUS */
-
-.good{
-color:green;
-font-weight:bold;
-}
-
-.low{
-color:red;
-font-weight:bold;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.sidebar{
-width:85px;
-}
-
-.logo h1,
-.logo p,
-.menu li a span{
-display:none;
-}
-
-.main{
-margin-left:85px;
-}
-
-}
-
-@media(max-width:600px){
-
-.form-grid{
-grid-template-columns:1fr;
-}
-
-.cards{
-grid-template-columns:1fr;
-}
-
-}
-
-</style>
+<link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
+
+<!-- MOBILE BUTTON -->
+
+<button class="menu-toggle" onclick="toggleSidebar()">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
 
 <!-- SIDEBAR -->
 
@@ -400,6 +109,28 @@ grid-template-columns:1fr;
 
 </li>
 
+<li>
+
+<a href="categories.html">
+
+<i class="fa-solid fa-layer-group"></i>
+<span>Categories</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="settings.html">
+
+<i class="fa-solid fa-gear"></i>
+<span>Settings</span>
+
+</a>
+
+</li>
+
 </ul>
 
 </div>
@@ -407,6 +138,8 @@ grid-template-columns:1fr;
 <!-- MAIN -->
 
 <div class="main">
+
+<!-- TOPBAR -->
 
 <div class="topbar">
 
@@ -429,17 +162,9 @@ Admin
 
 <i class="fa-solid fa-cart-shopping"></i>
 
-<h2>150</h2>
-
-<p>Today's Orders</p>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-peso-sign"></i>
-
-<h2>₱18,500</h2>
+<h2 id="salesCount">
+0
+</h2>
 
 <p>Total Sales</p>
 
@@ -447,11 +172,25 @@ Admin
 
 <div class="card">
 
+<i class="fa-solid fa-peso-sign"></i>
+
+<h2 id="salesAmount">
+₱0
+</h2>
+
+<p>Total Revenue</p>
+
+</div>
+
+<div class="card">
+
 <i class="fa-solid fa-fire"></i>
 
-<h2>Best Seller</h2>
+<h2>
+Live
+</h2>
 
-<p>Beef Shawarma</p>
+<p>Sales Monitoring</p>
 
 </div>
 
@@ -472,31 +211,37 @@ Create Sale
 
 <input
 type="text"
+id="saleReceipt"
 placeholder="Receipt No">
 
-<select>
+<!-- DYNAMIC PRODUCT -->
 
-<option>Select Product</option>
+<select id="saleProduct">
 
-<option>Beef Shawarma</option>
-<option>Chicken Shawarma</option>
-<option>Zinger Burger</option>
+<option value="">
+Select Product
+</option>
 
 </select>
 
 <input
 type="number"
+id="saleQty"
 placeholder="Quantity">
 
 <input
 type="number"
+id="salePrice"
 placeholder="Price">
 
 <input
 type="text"
+id="saleCashier"
 placeholder="Cashier Name">
 
-<button class="save-btn">
+<button
+class="save-btn"
+onclick="saveSale()">
 
 <i class="fa-solid fa-floppy-disk"></i>
 Save Sale
@@ -504,6 +249,18 @@ Save Sale
 </button>
 
 </div>
+
+</div>
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchSales"
+placeholder="Search Sales..."
+onkeyup="searchSales()">
 
 </div>
 
@@ -529,31 +286,7 @@ Save Sale
 
 </thead>
 
-<tbody>
-
-<tr>
-
-<td>OR-001</td>
-<td>Beef Shawarma</td>
-<td>2</td>
-<td>₱120</td>
-<td>₱240</td>
-<td>Admin</td>
-<td class="good">Paid</td>
-
-</tr>
-
-<tr>
-
-<td>OR-002</td>
-<td>Chicken Shawarma</td>
-<td>1</td>
-<td>₱110</td>
-<td>₱110</td>
-<td>Cashier 1</td>
-<td class="good">Paid</td>
-
-</tr>
+<tbody id="salesTable">
 
 </tbody>
 
@@ -562,6 +295,119 @@ Save Sale
 </div>
 
 </div>
+
+<script src="js/app.js"></script>
+
+<script>
+
+// LOAD PRODUCT DROPDOWN
+
+function loadSalesDropdown(){
+
+let finished =
+JSON.parse(localStorage.getItem("finishedProducts")) || [];
+
+let dropdown =
+document.getElementById("saleProduct");
+
+if(!dropdown) return;
+
+dropdown.innerHTML =
+'<option value="">Select Product</option>';
+
+finished.forEach(item=>{
+
+dropdown.innerHTML += `
+
+<option value="${item.name}">
+${item.name}
+</option>
+
+`;
+
+});
+
+}
+
+// SEARCH SALES
+
+function searchSales(){
+
+let input =
+document
+.getElementById("searchSales")
+.value
+.toLowerCase();
+
+let rows =
+document.querySelectorAll(
+"#salesTable tr"
+);
+
+rows.forEach(row=>{
+
+let text =
+row.innerText.toLowerCase();
+
+row.style.display =
+text.includes(input)
+? ""
+: "none";
+
+});
+
+}
+
+// LOAD SALES TOTAL
+
+function loadSalesTotals(){
+
+let sales =
+JSON.parse(localStorage.getItem("sales")) || [];
+
+let salesCount =
+document.getElementById("salesCount");
+
+let salesAmount =
+document.getElementById("salesAmount");
+
+if(salesCount){
+
+salesCount.innerText =
+sales.length;
+
+}
+
+let total = 0;
+
+sales.forEach(item=>{
+
+total += Number(item.total);
+
+});
+
+if(salesAmount){
+
+salesAmount.innerText =
+"₱" + total;
+
+}
+
+}
+
+// AUTO LOAD
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+
+loadSalesDropdown();
+loadSalesTotals();
+
+}
+);
+
+</script>
 
 </body>
 </html>
