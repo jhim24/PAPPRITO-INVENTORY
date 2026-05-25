@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PAPPRITO Items Masterlist</title>
+<title>Items Masterlist</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -28,9 +29,9 @@ display:flex;
 .sidebar{
 width:260px;
 height:100vh;
-background:linear-gradient(to bottom,#c40000,#8b0000);
-color:white;
+background:linear-gradient(to bottom,#d40000,#900000);
 padding:20px;
+color:white;
 position:fixed;
 }
 
@@ -40,8 +41,8 @@ margin-bottom:40px;
 }
 
 .logo h1{
-color:#ffd700;
 font-size:32px;
+color:#ffd700;
 }
 
 .logo p{
@@ -53,24 +54,34 @@ list-style:none;
 }
 
 .menu li{
-padding:15px;
 margin-bottom:10px;
 border-radius:10px;
-cursor:pointer;
+transition:.3s;
+}
+
+.menu li a{
+text-decoration:none;
+color:white;
+padding:15px;
 display:flex;
 align-items:center;
-gap:10px;
-transition:.3s;
+gap:12px;
 }
 
 .menu li:hover{
 background:#ffd700;
+}
+
+.menu li:hover a{
 color:black;
 }
 
 .active{
 background:#ffd700;
-color:black;
+}
+
+.active a{
+color:black !important;
 }
 
 /* MAIN */
@@ -104,18 +115,18 @@ font-weight:bold;
 /* FORM */
 
 .form-box{
-background:#f8f5e9;
-padding:20px;
+background:white;
+padding:25px;
 border-radius:15px;
-border:2px solid #e5c76b;
 margin-bottom:25px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
 .form-title{
-font-size:25px;
+font-size:24px;
+font-weight:bold;
 margin-bottom:20px;
 color:#c40000;
-font-weight:bold;
 }
 
 .form-grid{
@@ -126,7 +137,7 @@ gap:15px;
 
 .form-grid input,
 .form-grid select{
-padding:15px;
+padding:14px;
 border:1px solid #ccc;
 border-radius:10px;
 font-size:15px;
@@ -137,11 +148,11 @@ outline:none;
 background:#c40000;
 color:white;
 border:none;
-padding:15px;
+padding:14px;
 border-radius:10px;
-font-size:16px;
-font-weight:bold;
 cursor:pointer;
+font-size:15px;
+font-weight:bold;
 transition:.3s;
 }
 
@@ -151,19 +162,17 @@ background:#900000;
 
 /* SEARCH */
 
-.search-section{
+.search{
+margin-bottom:20px;
 display:flex;
 gap:15px;
-margin-bottom:20px;
 }
 
-.search-section input,
-.search-section select{
-padding:15px;
+.search input{
+padding:14px;
 border:none;
 border-radius:10px;
-font-size:15px;
-width:250px;
+width:300px;
 }
 
 /* TABLE */
@@ -172,6 +181,7 @@ width:250px;
 background:white;
 border-radius:15px;
 overflow:hidden;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
 table{
@@ -194,10 +204,7 @@ tbody tr:hover{
 background:#f5f5f5;
 }
 
-.stock{
-color:green;
-font-weight:bold;
-}
+/* BUTTONS */
 
 .action-btn{
 padding:8px 12px;
@@ -234,33 +241,38 @@ color:white;
 <ul class="menu">
 
 <li>
+<a href="dashboard.html">
 <i class="fa fa-home"></i>
 Dashboard
+</a>
 </li>
 
 <li class="active">
-<i class="fa fa-box"></i>
+<a href="items-masterlist.html">
+<i class="fa fa-boxes-stacked"></i>
 Items Masterlist
+</a>
 </li>
 
 <li>
+<a href="stock-in.html">
 <i class="fa fa-arrow-down"></i>
 Stock In
+</a>
 </li>
 
 <li>
+<a href="stock-out.html">
 <i class="fa fa-arrow-up"></i>
 Stock Out
+</a>
 </li>
 
 <li>
+<a href="reports.html">
 <i class="fa fa-chart-line"></i>
 Reports
-</li>
-
-<li>
-<i class="fa fa-right-from-bracket"></i>
-Logout
+</a>
 </li>
 
 </ul>
@@ -308,15 +320,11 @@ Add New Item
 
 <input type="number" placeholder="Beginning Stock">
 
-<input type="number" placeholder="Reorder Level">
-
-<input type="text" placeholder="Supplier">
-
-<input type="number" placeholder="Cost Per Unit">
+<input type="number" placeholder="Cost Price">
 
 <input type="number" placeholder="Selling Price">
 
-<input type="text" placeholder="Storage Location">
+<input type="text" placeholder="Supplier">
 
 <button class="save-btn">
 <i class="fa fa-floppy-disk"></i>
@@ -329,16 +337,9 @@ Save Item
 
 <!-- SEARCH -->
 
-<div class="search-section">
+<div class="search">
 
 <input type="text" placeholder="Search Item...">
-
-<select>
-<option>All Categories</option>
-<option>Beverages</option>
-<option>Raw Materials</option>
-<option>Packaging</option>
-</select>
 
 </div>
 
@@ -355,10 +356,9 @@ Save Item
 <th>Item Name</th>
 <th>Category</th>
 <th>Unit</th>
-<th>Current Stock</th>
-<th>Reorder</th>
-<th>Supplier</th>
+<th>Stock</th>
 <th>Cost</th>
+<th>Selling</th>
 <th>Actions</th>
 </tr>
 
@@ -371,10 +371,9 @@ Save Item
 <td>Coffee Beans</td>
 <td>Beverages</td>
 <td>KG</td>
-<td class="stock">500</td>
-<td>50</td>
-<td>ABC Supplier</td>
-<td>₱350</td>
+<td>500</td>
+<td>350</td>
+<td>500</td>
 <td>
 <button class="action-btn edit">Edit</button>
 <button class="action-btn delete">Delete</button>
@@ -383,13 +382,12 @@ Save Item
 
 <tr>
 <td>0002</td>
-<td>Plastic Cup 8oz</td>
-<td>Packaging</td>
+<td>Milk</td>
+<td>Raw Materials</td>
 <td>PCS</td>
-<td class="stock">300</td>
-<td>100</td>
-<td>Cup Supplier</td>
-<td>₱2</td>
+<td>200</td>
+<td>95</td>
+<td>120</td>
 <td>
 <button class="action-btn edit">Edit</button>
 <button class="action-btn delete">Delete</button>
@@ -398,13 +396,12 @@ Save Item
 
 <tr>
 <td>0003</td>
-<td>Milk</td>
-<td>Raw Materials</td>
+<td>Plastic Cups</td>
+<td>Packaging</td>
 <td>PCS</td>
-<td class="stock">200</td>
-<td>30</td>
-<td>Dairy Supplier</td>
-<td>₱95</td>
+<td>1000</td>
+<td>2</td>
+<td>5</td>
 <td>
 <button class="action-btn edit">Edit</button>
 <button class="action-btn delete">Delete</button>
