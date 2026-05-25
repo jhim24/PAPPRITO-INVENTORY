@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Categories</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet"
+href="css/style.css">
+
+</head>
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="logo">
+
+<h1>PAPPRITO</h1>
+<p>Inventory System</p>
+
+</div>
+
+<ul class="menu">
+
+<li>
+
+<a href="dashboard.html">
+
+<i class="fa fa-home"></i>
+<span>Dashboard</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="items-masterlist.html">
+
+<i class="fa fa-boxes-stacked"></i>
+<span>Items Masterlist</span>
+
+</a>
+
+</li>
+
+<li class="active">
+
+<a href="categories.html">
+
+<i class="fa fa-layer-group"></i>
+<span>Categories</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="stock-in.html">
+
+<i class="fa fa-arrow-down"></i>
+<span>Stock In</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="stock-out.html">
+
+<i class="fa fa-arrow-up"></i>
+<span>Stock Out</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="reports.html">
+
+<i class="fa fa-chart-line"></i>
+<span>Reports</span>
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<div class="topbar">
+
+<h1>Categories</h1>
+
+<div class="admin">
+
+<i class="fa fa-user"></i>
+Admin
+
+</div>
+
+</div>
+
+<!-- FORM -->
+
+<div class="form-box">
+
+<div class="form-title">
+
+<i class="fa fa-layer-group"></i>
+Add Category
+
+</div>
+
+<div class="form-grid">
+
+<input
+type="text"
+id="newCategory"
+placeholder="Category Name">
+
+<button
+class="save-btn"
+onclick="addCategory()">
+
+<i class="fa fa-floppy-disk"></i>
+Save Category
+
+</button>
+
+</div>
+
+</div>
+
+<!-- TABLE -->
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Category Name</th>
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody id="categoryTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
