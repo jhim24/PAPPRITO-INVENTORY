@@ -340,3 +340,33 @@ font-size:12px;
 }
 
 }
+/* CATEGORY */
+
+.category-box{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.category-add{
+display:flex;
+gap:10px;
+}
+
+.category-add input{
+flex:1;
+}
+
+.add-category-btn{
+background:#ffd700;
+border:none;
+padding:14px 20px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+.add-category-btn:hover{
+background:#ffcc00;
+}
