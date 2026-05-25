@@ -3,384 +3,29 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Raw Materials</title>
-
-<!-- FONT AWESOME -->
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<style>
-
-/* RESET */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
-
-/* BODY */
-
-body{
-background:#dfeef2;
-display:flex;
-min-height:100vh;
-}
-
-/* SIDEBAR */
-
-.sidebar{
-width:260px;
-background:linear-gradient(to bottom,#d40000,#900000);
-color:white;
-padding:20px;
-position:fixed;
-height:100%;
-overflow:auto;
-}
-
-/* LOGO */
-
-.logo{
-text-align:center;
-margin-bottom:40px;
-}
-
-.logo .icon{
-width:80px;
-height:80px;
-background:white;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-margin:auto;
-margin-bottom:15px;
-}
-
-.logo .icon i{
-font-size:35px;
-color:#c40000;
-}
-
-.logo h1{
-font-size:30px;
-color:#ffd700;
-}
-
-.logo p{
-font-size:14px;
-color:#eee;
-}
-
-/* MENU */
-
-.menu{
-list-style:none;
-}
-
-.menu li{
-margin-bottom:10px;
-border-radius:12px;
-overflow:hidden;
-transition:0.3s;
-}
-
-.menu li a{
-display:flex;
-align-items:center;
-gap:12px;
-padding:15px;
-text-decoration:none;
-color:white;
-font-size:15px;
-}
-
-.menu li:hover{
-background:#ffd700;
-}
-
-.menu li:hover a{
-color:black;
-}
-
-.active{
-background:#ffd700;
-}
-
-.active a{
-color:black !important;
-}
-
-/* MAIN */
-
-.main{
-margin-left:260px;
-width:100%;
-padding:25px;
-}
-
-/* TOPBAR */
-
-.topbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:25px;
-flex-wrap:wrap;
-gap:15px;
-}
-
-.topbar h1{
-font-size:32px;
-color:#c40000;
-}
-
-.admin{
-background:white;
-padding:10px 18px;
-border-radius:12px;
-font-weight:bold;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* CARDS */
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-margin-bottom:25px;
-}
-
-.card{
-background:white;
-padding:25px;
-border-radius:20px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
-}
-
-.card i{
-font-size:35px;
-color:#c40000;
-margin-bottom:15px;
-}
-
-.card h2{
-font-size:30px;
-margin-bottom:10px;
-}
-
-.card p{
-color:#666;
-}
-
-/* FORM */
-
-.form-box{
-background:white;
-padding:25px;
-border-radius:20px;
-margin-bottom:25px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-.form-title{
-font-size:24px;
-font-weight:bold;
-margin-bottom:20px;
-color:#c40000;
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-/* GRID */
-
-.form-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
-}
-
-.form-grid input,
-.form-grid select{
-padding:15px;
-border-radius:12px;
-border:1px solid #ccc;
-outline:none;
-font-size:15px;
-transition:0.3s;
-}
-
-.form-grid input:focus,
-.form-grid select:focus{
-border-color:#c40000;
-}
-
-/* BUTTON */
-
-.save-btn{
-background:linear-gradient(to right,#d40000,#900000);
-color:white;
-border:none;
-padding:15px;
-border-radius:12px;
-cursor:pointer;
-font-size:15px;
-font-weight:bold;
-transition:0.3s;
-}
-
-.save-btn:hover{
-opacity:0.9;
-transform:translateY(-2px);
-}
-
-/* SEARCH */
-
-.search-box{
-margin-bottom:20px;
-}
-
-.search-box input{
-width:100%;
-max-width:350px;
-padding:15px;
-border:none;
-border-radius:12px;
-outline:none;
-font-size:15px;
-box-shadow:0 2px 8px rgba(0,0,0,0.08);
-}
-
-/* TABLE */
-
-.table-container{
-background:white;
-border-radius:20px;
-overflow:auto;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-min-width:900px;
-}
-
-thead{
-background:#c40000;
-color:white;
-}
-
-th{
-padding:16px;
-text-align:left;
-font-size:15px;
-}
-
-td{
-padding:16px;
-border-bottom:1px solid #eee;
-font-size:14px;
-}
-
-tbody tr:hover{
-background:#fafafa;
-}
-
-/* STATUS */
-
-.good{
-color:green;
-font-weight:bold;
-}
-
-.low{
-color:red;
-font-weight:bold;
-}
-
-/* ACTION BUTTONS */
-
-.action-btn{
-padding:8px 12px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-font-size:13px;
-margin-right:5px;
-transition:0.3s;
-}
-
-.edit{
-background:#ffd700;
-}
-
-.delete{
-background:#c40000;
-color:white;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.sidebar{
-width:85px;
-}
-
-.logo h1,
-.logo p,
-.menu li a span{
-display:none;
-}
-
-.main{
-margin-left:85px;
-}
-
-}
-
-@media(max-width:600px){
-
-.topbar{
-flex-direction:column;
-align-items:flex-start;
-}
-
-.form-grid{
-grid-template-columns:1fr;
-}
-
-.cards{
-grid-template-columns:1fr;
-}
-
-}
-
-</style>
+<link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
 
+<!-- MOBILE BUTTON -->
+
+<button class="menu-toggle" onclick="toggleSidebar()">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
 <!-- SIDEBAR -->
 
 <div class="sidebar">
-
-<!-- LOGO -->
 
 <div class="logo">
 
@@ -395,8 +40,6 @@ grid-template-columns:1fr;
 <p>Inventory System</p>
 
 </div>
-
-<!-- MENU -->
 
 <ul class="menu">
 
@@ -477,6 +120,17 @@ grid-template-columns:1fr;
 
 </li>
 
+<li>
+
+<a href="settings.html">
+
+<i class="fa-solid fa-gear"></i>
+<span>Settings</span>
+
+</a>
+
+</li>
+
 </ul>
 
 </div>
@@ -508,7 +162,9 @@ Admin
 
 <i class="fa-solid fa-box"></i>
 
-<h2>120</h2>
+<h2 id="rawCount">
+0
+</h2>
 
 <p>Total Raw Materials</p>
 
@@ -518,7 +174,9 @@ Admin
 
 <i class="fa-solid fa-warehouse"></i>
 
-<h2>350KG</h2>
+<h2 id="totalStock">
+0
+</h2>
 
 <p>Total Stocks</p>
 
@@ -528,7 +186,9 @@ Admin
 
 <i class="fa-solid fa-triangle-exclamation"></i>
 
-<h2>5</h2>
+<h2 id="lowStockCount">
+0
+</h2>
 
 <p>Low Stock Items</p>
 
@@ -551,15 +211,19 @@ Add Raw Material
 
 <input
 type="text"
+id="materialCode"
 placeholder="Material Code">
 
 <input
 type="text"
+id="materialName"
 placeholder="Material Name">
 
-<select>
+<select id="materialCategory">
 
-<option>Select Category</option>
+<option value="">
+Select Category
+</option>
 
 <option>Meat</option>
 <option>Vegetables</option>
@@ -570,21 +234,27 @@ placeholder="Material Name">
 
 <input
 type="text"
+id="materialUnit"
 placeholder="Unit (KG/PCS/Liters)">
 
 <input
 type="number"
+id="materialStock"
 placeholder="Beginning Stock">
 
 <input
 type="number"
+id="materialCost"
 placeholder="Cost Per Unit">
 
 <input
 type="text"
+id="materialSupplier"
 placeholder="Supplier">
 
-<button class="save-btn">
+<button
+class="save-btn"
+onclick="saveRawMaterial()">
 
 <i class="fa-solid fa-floppy-disk"></i>
 Save Material
@@ -601,7 +271,9 @@ Save Material
 
 <input
 type="text"
-placeholder="Search Raw Material...">
+id="searchRaw"
+placeholder="Search Raw Material..."
+onkeyup="searchRawMaterial()">
 
 </div>
 
@@ -629,65 +301,7 @@ placeholder="Search Raw Material...">
 
 </thead>
 
-<tbody>
-
-<tr>
-
-<td>RM-001</td>
-<td>Beef</td>
-<td>Meat</td>
-<td>KG</td>
-<td>10</td>
-<td>₱450</td>
-<td>Fresh Meat Supplier</td>
-<td class="good">Good</td>
-
-<td>
-
-<button class="action-btn edit">
-
-Edit
-
-</button>
-
-<button class="action-btn delete">
-
-Delete
-
-</button>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>RM-002</td>
-<td>Cheese Sauce</td>
-<td>Sauces</td>
-<td>Liters</td>
-<td>2</td>
-<td>₱180</td>
-<td>Sauce Supplier</td>
-<td class="low">Low</td>
-
-<td>
-
-<button class="action-btn edit">
-
-Edit
-
-</button>
-
-<button class="action-btn delete">
-
-Delete
-
-</button>
-
-</td>
-
-</tr>
+<tbody id="rawMaterialTable">
 
 </tbody>
 
@@ -696,6 +310,8 @@ Delete
 </div>
 
 </div>
+
+<script src="js/app.js"></script>
 
 </body>
 </html>
