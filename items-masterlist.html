@@ -3,6 +3,7 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
@@ -17,7 +18,7 @@ href="css/style.css">
 </head>
 <body>
 
-<!-- MOBILE BUTTON -->
+<!-- MOBILE MENU -->
 
 <button
 class="menu-toggle"
@@ -71,6 +72,17 @@ onclick="toggleSidebar()">
 
 <li>
 
+<a href="categories.html">
+
+<i class="fa-solid fa-layer-group"></i>
+<span>Category</span>
+
+</a>
+
+</li>
+
+<li>
+
 <a href="raw-materials.html">
 
 <i class="fa-solid fa-drumstick-bite"></i>
@@ -93,10 +105,32 @@ onclick="toggleSidebar()">
 
 <li>
 
-<a href="finished-products.html">
+<a href="transfer-in.html">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+<span>Transfer In</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="transfer-out.html">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+<span>Transfer Out</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="finished-inventory.html">
 
 <i class="fa-solid fa-burger"></i>
-<span>Finished Products</span>
+<span>Finished Inventory</span>
 
 </a>
 
@@ -115,10 +149,10 @@ onclick="toggleSidebar()">
 
 <li>
 
-<a href="reports.html">
+<a href="supplier.html">
 
-<i class="fa-solid fa-file-lines"></i>
-<span>Reports</span>
+<i class="fa-solid fa-truck"></i>
+<span>Supplier</span>
 
 </a>
 
@@ -126,10 +160,21 @@ onclick="toggleSidebar()">
 
 <li>
 
-<a href="categories.html">
+<a href="purchase.html">
 
-<i class="fa-solid fa-layer-group"></i>
-<span>Categories</span>
+<i class="fa-solid fa-cart-shopping"></i>
+<span>Purchase</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="reports.html">
+
+<i class="fa-solid fa-file-lines"></i>
+<span>Reports</span>
 
 </a>
 
@@ -153,6 +198,8 @@ onclick="toggleSidebar()">
 <!-- MAIN -->
 
 <div class="main">
+
+<!-- TOPBAR -->
 
 <div class="topbar">
 
@@ -197,13 +244,13 @@ Admin
 
 <div class="card">
 
-<i class="fa-solid fa-warehouse"></i>
+<i class="fa-solid fa-database"></i>
 
 <h2>
 Live
 </h2>
 
-<p>Inventory Database</p>
+<p>Master Database</p>
 
 </div>
 
@@ -241,6 +288,7 @@ Select Category
 <option>Raw Material</option>
 <option>Finished Product</option>
 <option>Packaging</option>
+<option>Beverages</option>
 
 </select>
 
