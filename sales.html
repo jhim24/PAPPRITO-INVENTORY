@@ -3,21 +3,26 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sales Module</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Finished Inventory</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet"
+href="css/style.css">
 
 </head>
 <body>
 
-<!-- MOBILE BUTTON -->
+<!-- MOBILE MENU -->
 
-<button class="menu-toggle" onclick="toggleSidebar()">
+<button
+class="menu-toggle"
+onclick="toggleSidebar()">
 
 <i class="fa-solid fa-bars"></i>
 
@@ -31,13 +36,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <div class="icon">
 
-<i class="fa-solid fa-cash-register"></i>
+<i class="fa-solid fa-burger"></i>
 
 </div>
 
 <h1>PAPPRITO</h1>
 
-<p>Sales System</p>
+<p>Finished Inventory</p>
 
 </div>
 
@@ -49,6 +54,28 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <i class="fa-solid fa-chart-line"></i>
 <span>Dashboard</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="items-masterlist.html">
+
+<i class="fa-solid fa-boxes-stacked"></i>
+<span>Items Masterlist</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="categories.html">
+
+<i class="fa-solid fa-layer-group"></i>
+<span>Category</span>
 
 </a>
 
@@ -78,16 +105,38 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <li>
 
-<a href="finished-products.html">
+<a href="transfer-in.html">
 
-<i class="fa-solid fa-burger"></i>
-<span>Finished Products</span>
+<i class="fa-solid fa-right-to-bracket"></i>
+<span>Transfer In</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="transfer-out.html">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+<span>Transfer Out</span>
 
 </a>
 
 </li>
 
 <li class="active">
+
+<a href="finished-inventory.html">
+
+<i class="fa-solid fa-burger"></i>
+<span>Finished Inventory</span>
+
+</a>
+
+</li>
+
+<li>
 
 <a href="sales.html">
 
@@ -100,10 +149,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <li>
 
-<a href="reports.html">
+<a href="supplier.html">
 
-<i class="fa-solid fa-file-lines"></i>
-<span>Reports</span>
+<i class="fa-solid fa-truck"></i>
+<span>Supplier</span>
 
 </a>
 
@@ -111,10 +160,21 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <li>
 
-<a href="categories.html">
+<a href="purchase.html">
 
-<i class="fa-solid fa-layer-group"></i>
-<span>Categories</span>
+<i class="fa-solid fa-cart-shopping"></i>
+<span>Purchase</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="reports.html">
+
+<i class="fa-solid fa-file-lines"></i>
+<span>Reports</span>
 
 </a>
 
@@ -143,7 +203,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <div class="topbar">
 
-<h1>Sales Module</h1>
+<h1>Finished Inventory</h1>
 
 <div class="admin">
 
@@ -160,93 +220,37 @@ Admin
 
 <div class="card">
 
-<i class="fa-solid fa-cart-shopping"></i>
+<i class="fa-solid fa-box"></i>
 
-<h2 id="salesCount">
+<h2 id="finishedInventoryCount">
 0
 </h2>
 
-<p>Total Sales</p>
+<p>Total Products</p>
 
 </div>
 
 <div class="card">
 
-<i class="fa-solid fa-peso-sign"></i>
+<i class="fa-solid fa-burger"></i>
 
-<h2 id="salesAmount">
-₱0
+<h2 id="finishedInventoryStocks">
+0
 </h2>
 
-<p>Total Revenue</p>
+<p>Total Available Stocks</p>
 
 </div>
 
 <div class="card">
 
-<i class="fa-solid fa-fire"></i>
+<i class="fa-solid fa-warehouse"></i>
 
 <h2>
 Live
 </h2>
 
-<p>Sales Monitoring</p>
-
-</div>
-
-</div>
-
-<!-- FORM -->
-
-<div class="form-box">
-
-<div class="form-title">
-
-<i class="fa-solid fa-cash-register"></i>
-Create Sale
-
-</div>
-
-<div class="form-grid">
-
-<input
-type="text"
-id="saleReceipt"
-placeholder="Receipt No">
-
-<!-- DYNAMIC PRODUCT -->
-
-<select id="saleProduct">
-
-<option value="">
-Select Product
-</option>
-
-</select>
-
-<input
-type="number"
-id="saleQty"
-placeholder="Quantity">
-
-<input
-type="number"
-id="salePrice"
-placeholder="Price">
-
-<input
-type="text"
-id="saleCashier"
-placeholder="Cashier Name">
-
-<button
-class="save-btn"
-onclick="saveSale()">
-
-<i class="fa-solid fa-floppy-disk"></i>
-Save Sale
-
-</button>
+<p>Inventory Monitoring</p>
 
 </div>
 
@@ -258,9 +262,9 @@ Save Sale
 
 <input
 type="text"
-id="searchSales"
-placeholder="Search Sales..."
-onkeyup="searchSales()">
+id="searchFinishedInventory"
+placeholder="Search Finished Inventory..."
+onkeyup="searchFinishedInventory()">
 
 </div>
 
@@ -274,19 +278,17 @@ onkeyup="searchSales()">
 
 <tr>
 
-<th>Receipt No</th>
-<th>Product</th>
-<th>Quantity</th>
-<th>Price</th>
-<th>Total</th>
-<th>Cashier</th>
+<th>Code</th>
+<th>Product Name</th>
+<th>Category</th>
+<th>Available Stock</th>
 <th>Status</th>
 
 </tr>
 
 </thead>
 
-<tbody id="salesTable">
+<tbody id="finishedInventoryTable">
 
 </tbody>
 
@@ -300,48 +302,107 @@ onkeyup="searchSales()">
 
 <script>
 
-// LOAD PRODUCT DROPDOWN
+// =====================================
+// LOAD FINISHED INVENTORY
+// =====================================
 
-function loadSalesDropdown(){
+function loadFinishedInventory(){
 
-let finished =
-JSON.parse(localStorage.getItem("finishedProducts")) || [];
+let inventory =
+JSON.parse(
+localStorage.getItem('finishedInventory')
+) || [];
 
-let dropdown =
-document.getElementById("saleProduct");
+let table =
+document.getElementById(
+'finishedInventoryTable'
+);
 
-if(!dropdown) return;
+if(!table) return;
 
-dropdown.innerHTML =
-'<option value="">Select Product</option>';
+table.innerHTML = '';
 
-finished.forEach(item=>{
+let totalStocks = 0;
 
-dropdown.innerHTML += `
+inventory.forEach(item=>{
 
-<option value="${item.name}">
-${item.name}
-</option>
+totalStocks += Number(item.stock);
+
+let status =
+Number(item.stock) <= 10
+? 'Low Stock'
+: 'Available';
+
+let statusClass =
+Number(item.stock) <= 10
+? 'low'
+: 'good';
+
+table.innerHTML += `
+
+<tr>
+
+<td>${item.code}</td>
+
+<td>${item.name}</td>
+
+<td>${item.category}</td>
+
+<td>${item.stock}</td>
+
+<td class="${statusClass}">
+${status}
+</td>
+
+</tr>
 
 `;
 
 });
 
+let finishedInventoryCount =
+document.getElementById(
+'finishedInventoryCount'
+);
+
+let finishedInventoryStocks =
+document.getElementById(
+'finishedInventoryStocks'
+);
+
+if(finishedInventoryCount){
+
+finishedInventoryCount.innerText =
+inventory.length;
+
 }
 
-// SEARCH SALES
+if(finishedInventoryStocks){
 
-function searchSales(){
+finishedInventoryStocks.innerText =
+totalStocks;
+
+}
+
+}
+
+// =====================================
+// SEARCH
+// =====================================
+
+function searchFinishedInventory(){
 
 let input =
 document
-.getElementById("searchSales")
+.getElementById(
+'searchFinishedInventory'
+)
 .value
 .toLowerCase();
 
 let rows =
 document.querySelectorAll(
-"#salesTable tr"
+'#finishedInventoryTable tr'
 );
 
 rows.forEach(row=>{
@@ -351,58 +412,22 @@ row.innerText.toLowerCase();
 
 row.style.display =
 text.includes(input)
-? ""
-: "none";
+? ''
+: 'none';
 
 });
 
 }
 
-// LOAD SALES TOTAL
-
-function loadSalesTotals(){
-
-let sales =
-JSON.parse(localStorage.getItem("sales")) || [];
-
-let salesCount =
-document.getElementById("salesCount");
-
-let salesAmount =
-document.getElementById("salesAmount");
-
-if(salesCount){
-
-salesCount.innerText =
-sales.length;
-
-}
-
-let total = 0;
-
-sales.forEach(item=>{
-
-total += Number(item.total);
-
-});
-
-if(salesAmount){
-
-salesAmount.innerText =
-"₱" + total;
-
-}
-
-}
-
+// =====================================
 // AUTO LOAD
+// =====================================
 
 document.addEventListener(
-"DOMContentLoaded",
+'DOMContentLoaded',
 ()=>{
 
-loadSalesDropdown();
-loadSalesTotals();
+loadFinishedInventory();
 
 }
 );
