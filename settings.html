@@ -7,266 +7,26 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Settings</title>
-
-<!-- FONT AWESOME -->
+<title>Settings Module</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<style>
-
-/* RESET */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
-
-/* BODY */
-
-body{
-background:#dfeef2;
-display:flex;
-min-height:100vh;
-}
-
-/* SIDEBAR */
-
-.sidebar{
-width:260px;
-background:linear-gradient(to bottom,#d40000,#900000);
-color:white;
-padding:20px;
-position:fixed;
-height:100%;
-overflow:auto;
-}
-
-/* LOGO */
-
-.logo{
-text-align:center;
-margin-bottom:40px;
-}
-
-.logo .icon{
-width:80px;
-height:80px;
-background:white;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-margin:auto;
-margin-bottom:15px;
-}
-
-.logo .icon i{
-font-size:35px;
-color:#c40000;
-}
-
-.logo h1{
-font-size:30px;
-color:#ffd700;
-}
-
-.logo p{
-font-size:14px;
-color:#eee;
-}
-
-/* MENU */
-
-.menu{
-list-style:none;
-}
-
-.menu li{
-margin-bottom:10px;
-border-radius:12px;
-overflow:hidden;
-transition:0.3s;
-}
-
-.menu li a{
-display:flex;
-align-items:center;
-gap:12px;
-padding:15px;
-text-decoration:none;
-color:white;
-font-size:15px;
-}
-
-.menu li:hover{
-background:#ffd700;
-}
-
-.menu li:hover a{
-color:black;
-}
-
-.active{
-background:#ffd700;
-}
-
-.active a{
-color:black !important;
-}
-
-/* MAIN */
-
-.main{
-margin-left:260px;
-width:100%;
-padding:25px;
-}
-
-/* TOPBAR */
-
-.topbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:25px;
-flex-wrap:wrap;
-gap:15px;
-}
-
-.topbar h1{
-font-size:32px;
-color:#c40000;
-}
-
-.admin{
-background:white;
-padding:10px 18px;
-border-radius:12px;
-font-weight:bold;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* SETTINGS BOX */
-
-.settings-box{
-background:white;
-padding:25px;
-border-radius:20px;
-margin-bottom:25px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-.settings-title{
-font-size:24px;
-font-weight:bold;
-margin-bottom:20px;
-color:#c40000;
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-/* GRID */
-
-.settings-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:20px;
-}
-
-/* CARD */
-
-.setting-card{
-background:#f9f9f9;
-padding:20px;
-border-radius:15px;
-border:1px solid #eee;
-}
-
-.setting-card h3{
-margin-bottom:15px;
-color:#c40000;
-font-size:20px;
-}
-
-.setting-card label{
-display:block;
-margin-bottom:8px;
-font-weight:600;
-color:#444;
-}
-
-.setting-card input,
-.setting-card select{
-width:100%;
-padding:14px;
-border-radius:10px;
-border:1px solid #ccc;
-outline:none;
-margin-bottom:15px;
-font-size:14px;
-}
-
-/* BUTTON */
-
-.save-btn{
-background:linear-gradient(to right,#d40000,#900000);
-color:white;
-border:none;
-padding:14px 20px;
-border-radius:10px;
-cursor:pointer;
-font-size:15px;
-font-weight:bold;
-transition:0.3s;
-}
-
-.save-btn:hover{
-opacity:0.9;
-transform:translateY(-2px);
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.sidebar{
-width:85px;
-}
-
-.logo h1,
-.logo p,
-.menu li a span{
-display:none;
-}
-
-.main{
-margin-left:85px;
-}
-
-}
-
-@media(max-width:600px){
-
-.settings-grid{
-grid-template-columns:1fr;
-}
-
-.topbar{
-flex-direction:column;
-align-items:flex-start;
-}
-
-}
-
-</style>
+<link rel="stylesheet"
+href="css/style.css">
 
 </head>
 <body>
+
+<!-- MOBILE MENU -->
+
+<button
+class="menu-toggle"
+onclick="toggleSidebar()">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
 
 <!-- SIDEBAR -->
 
@@ -282,7 +42,7 @@ align-items:flex-start;
 
 <h1>PAPPRITO</h1>
 
-<p>System Settings</p>
+<p>Settings Module</p>
 
 </div>
 
@@ -294,6 +54,28 @@ align-items:flex-start;
 
 <i class="fa-solid fa-chart-line"></i>
 <span>Dashboard</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="items-masterlist.html">
+
+<i class="fa-solid fa-boxes-stacked"></i>
+<span>Items Masterlist</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="categories.html">
+
+<i class="fa-solid fa-layer-group"></i>
+<span>Category</span>
 
 </a>
 
@@ -323,10 +105,32 @@ align-items:flex-start;
 
 <li>
 
-<a href="finished-products.html">
+<a href="transfer-in.html">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+<span>Transfer In</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="transfer-out.html">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+<span>Transfer Out</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="finished-inventory.html">
 
 <i class="fa-solid fa-burger"></i>
-<span>Finished Products</span>
+<span>Finished Inventory</span>
 
 </a>
 
@@ -345,10 +149,10 @@ align-items:flex-start;
 
 <li>
 
-<a href="reports.html">
+<a href="supplier.html">
 
-<i class="fa-solid fa-file-lines"></i>
-<span>Reports</span>
+<i class="fa-solid fa-truck"></i>
+<span>Supplier</span>
 
 </a>
 
@@ -356,10 +160,21 @@ align-items:flex-start;
 
 <li>
 
-<a href="categories.html">
+<a href="purchase.html">
 
-<i class="fa-solid fa-layer-group"></i>
-<span>Categories</span>
+<i class="fa-solid fa-cart-shopping"></i>
+<span>Purchase</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="reports.html">
+
+<i class="fa-solid fa-file-lines"></i>
+<span>Reports</span>
 
 </a>
 
@@ -384,9 +199,11 @@ align-items:flex-start;
 
 <div class="main">
 
+<!-- TOPBAR -->
+
 <div class="topbar">
 
-<h1>System Settings</h1>
+<h1>Settings Module</h1>
 
 <div class="admin">
 
@@ -397,147 +214,119 @@ Admin
 
 </div>
 
-<!-- SETTINGS -->
+<!-- CARDS -->
 
-<div class="settings-box">
+<div class="cards">
 
-<div class="settings-title">
+<div class="card">
 
-<i class="fa-solid fa-gear"></i>
-System Configuration
+<i class="fa-solid fa-store"></i>
 
-</div>
+<h2>
+Store
+</h2>
 
-<div class="settings-grid">
-
-<!-- STORE SETTINGS -->
-
-<div class="setting-card">
-
-<h3>Store Information</h3>
-
-<label>Store Name</label>
-
-<input
-type="text"
-value="PAPPRITO">
-
-<label>Branch</label>
-
-<input
-type="text"
-placeholder="Enter Branch">
-
-<label>Contact Number</label>
-
-<input
-type="text"
-placeholder="Enter Contact Number">
-
-<button class="save-btn">
-
-Save Information
-
-</button>
+<p>Business Information</p>
 
 </div>
 
-<!-- USER SETTINGS -->
+<div class="card">
 
-<div class="setting-card">
+<i class="fa-solid fa-user-lock"></i>
 
-<h3>User Account</h3>
+<h2>
+Security
+</h2>
 
-<label>Username</label>
+<p>System Protection</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-database"></i>
+
+<h2>
+Backup
+</h2>
+
+<p>Local Database</p>
+
+</div>
+
+</div>
+
+<!-- SETTINGS FORM -->
+
+<div class="form-box">
+
+<div class="form-title">
+
+<i class="fa-solid fa-sliders"></i>
+System Settings
+
+</div>
+
+<div class="form-grid">
+
+<!-- STORE NAME -->
 
 <input
 type="text"
-value="admin">
+id="storeName"
+placeholder="Store Name">
 
-<label>Password</label>
+<!-- OWNER -->
 
 <input
-type="password"
-value="123456">
+type="text"
+id="storeOwner"
+placeholder="Owner Name">
 
-<label>User Role</label>
+<!-- CONTACT -->
 
-<select>
+<input
+type="text"
+id="storeContact"
+placeholder="Contact Number">
 
-<option>Administrator</option>
-<option>Manager</option>
-<option>Cashier</option>
+<!-- ADDRESS -->
+
+<input
+type="text"
+id="storeAddress"
+placeholder="Store Address">
+
+<!-- CURRENCY -->
+
+<select id="storeCurrency">
+
+<option value="">
+Select Currency
+</option>
+
+<option value="₱">
+Philippine Peso (₱)
+</option>
+
+<option value="$">
+Dollar ($)
+</option>
+
+<option value="﷼">
+Qatar Riyal (﷼)
+</option>
 
 </select>
 
-<button class="save-btn">
+<!-- SAVE -->
 
-Update Account
+<button
+class="save-btn"
+onclick="saveSettings()">
 
-</button>
-
-</div>
-
-<!-- INVENTORY SETTINGS -->
-
-<div class="setting-card">
-
-<h3>Inventory Settings</h3>
-
-<label>Low Stock Alert</label>
-
-<input
-type="number"
-value="10">
-
-<label>Default Unit</label>
-
-<select>
-
-<option>KG</option>
-<option>PCS</option>
-<option>Liters</option>
-
-</select>
-
-<label>Currency</label>
-
-<select>
-
-<option>PHP ₱</option>
-<option>USD $</option>
-
-</select>
-
-<button class="save-btn">
-
-Save Inventory Settings
-
-</button>
-
-</div>
-
-<!-- BACKUP SETTINGS -->
-
-<div class="setting-card">
-
-<h3>Backup & Security</h3>
-
-<label>Database Backup</label>
-
-<input
-type="text"
-value="Last Backup: Today">
-
-<label>System Status</label>
-
-<input
-type="text"
-value="System Active">
-
-<button class="save-btn">
-
-Backup System
+<i class="fa-solid fa-floppy-disk"></i>
+Save Settings
 
 </button>
 
@@ -545,9 +334,330 @@ Backup System
 
 </div>
 
+<!-- TABLE -->
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Setting</th>
+<th>Value</th>
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody id="settingsTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- BACKUP BUTTONS -->
+
+<div class="cards">
+
+<button
+class="save-btn"
+onclick="backupSystem()">
+
+<i class="fa-solid fa-download"></i>
+Backup Data
+
+</button>
+
+<button
+class="save-btn"
+onclick="resetSystem()">
+
+<i class="fa-solid fa-trash"></i>
+Reset System
+
+</button>
+
 </div>
 
 </div>
+
+<script src="js/app.js"></script>
+
+<script>
+
+// =====================================
+// SAVE SETTINGS
+// =====================================
+
+function saveSettings(){
+
+let storeName =
+document.getElementById(
+'storeName'
+).value;
+
+let storeOwner =
+document.getElementById(
+'storeOwner'
+).value;
+
+let storeContact =
+document.getElementById(
+'storeContact'
+).value;
+
+let storeAddress =
+document.getElementById(
+'storeAddress'
+).value;
+
+let storeCurrency =
+document.getElementById(
+'storeCurrency'
+).value;
+
+if(
+storeName === '' ||
+storeOwner === '' ||
+storeContact === '' ||
+storeAddress === '' ||
+storeCurrency === ''
+){
+alert('Please complete all fields');
+return;
+}
+
+let settings = {
+
+storeName,
+storeOwner,
+storeContact,
+storeAddress,
+storeCurrency
+
+};
+
+localStorage.setItem(
+'settings',
+JSON.stringify(settings)
+);
+
+alert('Settings Saved');
+
+loadSettings();
+
+}
+
+// =====================================
+// LOAD SETTINGS
+// =====================================
+
+function loadSettings(){
+
+let settings =
+JSON.parse(
+localStorage.getItem('settings')
+);
+
+let table =
+document.getElementById(
+'settingsTable'
+);
+
+if(!table) return;
+
+if(!settings){
+
+table.innerHTML = `
+
+<tr>
+
+<td colspan="3">
+No settings saved.
+</td>
+
+</tr>
+
+`;
+
+return;
+
+}
+
+table.innerHTML = `
+
+<tr>
+
+<td>Store Name</td>
+<td>${settings.storeName}</td>
+<td class="good">Saved</td>
+
+</tr>
+
+<tr>
+
+<td>Owner</td>
+<td>${settings.storeOwner}</td>
+<td class="good">Saved</td>
+
+</tr>
+
+<tr>
+
+<td>Contact</td>
+<td>${settings.storeContact}</td>
+<td class="good">Saved</td>
+
+</tr>
+
+<tr>
+
+<td>Address</td>
+<td>${settings.storeAddress}</td>
+<td class="good">Saved</td>
+
+</tr>
+
+<tr>
+
+<td>Currency</td>
+<td>${settings.storeCurrency}</td>
+<td class="good">Saved</td>
+
+</tr>
+
+`;
+
+}
+
+// =====================================
+// BACKUP SYSTEM
+// =====================================
+
+function backupSystem(){
+
+let data = {
+
+masterItems:
+JSON.parse(
+localStorage.getItem('masterItems')
+) || [],
+
+categories:
+JSON.parse(
+localStorage.getItem('categories')
+) || [],
+
+rawMaterials:
+JSON.parse(
+localStorage.getItem('rawMaterials')
+) || [],
+
+productions:
+JSON.parse(
+localStorage.getItem('productions')
+) || [],
+
+transferIn:
+JSON.parse(
+localStorage.getItem('transferIn')
+) || [],
+
+transferOut:
+JSON.parse(
+localStorage.getItem('transferOut')
+) || [],
+
+finishedInventory:
+JSON.parse(
+localStorage.getItem('finishedInventory')
+) || [],
+
+sales:
+JSON.parse(
+localStorage.getItem('sales')
+) || [],
+
+suppliers:
+JSON.parse(
+localStorage.getItem('suppliers')
+) || [],
+
+purchases:
+JSON.parse(
+localStorage.getItem('purchases')
+) || [],
+
+settings:
+JSON.parse(
+localStorage.getItem('settings')
+) || {}
+
+};
+
+let blob =
+new Blob(
+[JSON.stringify(data,null,2)],
+{type:'application/json'}
+);
+
+let a =
+document.createElement('a');
+
+a.href =
+URL.createObjectURL(blob);
+
+a.download =
+'papprito-backup.json';
+
+a.click();
+
+alert('Backup Downloaded');
+
+}
+
+// =====================================
+// RESET SYSTEM
+// =====================================
+
+function resetSystem(){
+
+let confirmReset =
+confirm(
+'Are you sure you want to reset the whole system?'
+);
+
+if(confirmReset){
+
+localStorage.clear();
+
+alert('System Reset Complete');
+
+location.reload();
+
+}
+
+}
+
+// =====================================
+// AUTO LOAD
+// =====================================
+
+document.addEventListener(
+'DOMContentLoaded',
+()=>{
+
+loadSettings();
+
+}
+);
+
+</script>
 
 </body>
 </html>
