@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Supplier Module</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet"
+href="css/style.css">
+
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+
+<button
+class="menu-toggle"
+onclick="toggleSidebar()">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="logo">
+
+<div class="icon">
+
+<i class="fa-solid fa-truck"></i>
+
+</div>
+
+<h1>PAPPRITO</h1>
+
+<p>Supplier Module</p>
+
+</div>
+
+<ul class="menu">
+
+<li>
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-chart-line"></i>
+<span>Dashboard</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="items-masterlist.html">
+
+<i class="fa-solid fa-boxes-stacked"></i>
+<span>Items Masterlist</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="categories.html">
+
+<i class="fa-solid fa-layer-group"></i>
+<span>Category</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="raw-materials.html">
+
+<i class="fa-solid fa-drumstick-bite"></i>
+<span>Raw Materials</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="production.html">
+
+<i class="fa-solid fa-gears"></i>
+<span>Production</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="transfer-in.html">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+<span>Transfer In</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="transfer-out.html">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+<span>Transfer Out</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="finished-inventory.html">
+
+<i class="fa-solid fa-burger"></i>
+<span>Finished Inventory</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="sales.html">
+
+<i class="fa-solid fa-cash-register"></i>
+<span>Sales</span>
+
+</a>
+
+</li>
+
+<li class="active">
+
+<a href="supplier.html">
+
+<i class="fa-solid fa-truck"></i>
+<span>Supplier</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="purchase.html">
+
+<i class="fa-solid fa-cart-shopping"></i>
+<span>Purchase</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="reports.html">
+
+<i class="fa-solid fa-file-lines"></i>
+<span>Reports</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="settings.html">
+
+<i class="fa-solid fa-gear"></i>
+<span>Settings</span>
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+<h1>Supplier Module</h1>
+
+<div class="admin">
+
+<i class="fa-solid fa-user"></i>
+Admin
+
+</div>
+
+</div>
+
+<!-- CARDS -->
+
+<div class="cards">
+
+<div class="card">
+
+<i class="fa-solid fa-truck"></i>
+
+<h2 id="supplierCount">
+0
+</h2>
+
+<p>Total Suppliers</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-phone"></i>
+
+<h2>
+Live
+</h2>
+
+<p>Supplier Database</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-warehouse"></i>
+
+<h2>
+Ready
+</h2>
+
+<p>Purchase Connected</p>
+
+</div>
+
+</div>
+
+<!-- FORM -->
+
+<div class="form-box">
+
+<div class="form-title">
+
+<i class="fa-solid fa-plus"></i>
+Add Supplier
+
+</div>
+
+<div class="form-grid">
+
+<input
+type="text"
+id="supplierName"
+placeholder="Supplier Name">
+
+<input
+type="text"
+id="supplierContact"
+placeholder="Contact Number">
+
+<input
+type="email"
+id="supplierEmail"
+placeholder="Email Address">
+
+<input
+type="text"
+id="supplierAddress"
+placeholder="Address">
+
+<input
+type="text"
+id="supplierProduct"
+placeholder="Products Supplied">
+
+<button
+class="save-btn"
+onclick="saveSupplier()">
+
+<i class="fa-solid fa-floppy-disk"></i>
+Save Supplier
+
+</button>
+
+</div>
+
+</div>
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchSupplier"
+placeholder="Search Supplier..."
+onkeyup="searchSupplier()">
+
+</div>
+
+<!-- TABLE -->
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Supplier Name</th>
+<th>Contact</th>
+<th>Email</th>
+<th>Address</th>
+<th>Products</th>
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody id="supplierTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script src="js/app.js"></script>
+
+<script>
+
+// =====================================
+// SAVE SUPPLIER
+// =====================================
+
+function saveSupplier(){
+
+let name =
+document.getElementById(
+'supplierName'
+).value;
+
+let contact =
+document.getElementById(
+'supplierContact'
+).value;
+
+let email =
+document.getElementById(
+'supplierEmail'
+).value;
+
+let address =
+document.getElementById(
+'supplierAddress'
+).value;
+
+let product =
+document.getElementById(
+'supplierProduct'
+).value;
+
+if(
+name === '' ||
+contact === '' ||
+email === '' ||
+address === '' ||
+product === ''
+){
+alert('Please complete all fields');
+return;
+}
+
+let suppliers =
+JSON.parse(
+localStorage.getItem('suppliers')
+) || [];
+
+suppliers.push({
+
+name,
+contact,
+email,
+address,
+product
+
+});
+
+localStorage.setItem(
+'suppliers',
+JSON.stringify(suppliers)
+);
+
+alert('Supplier Saved');
+
+clearSupplierForm();
+
+loadSuppliers();
+loadSupplierCards();
+
+}
+
+// =====================================
+// LOAD SUPPLIERS
+// =====================================
+
+function loadSuppliers(){
+
+let table =
+document.getElementById(
+'supplierTable'
+);
+
+if(!table) return;
+
+let suppliers =
+JSON.parse(
+localStorage.getItem('suppliers')
+) || [];
+
+table.innerHTML = '';
+
+suppliers.forEach(item=>{
+
+table.innerHTML += `
+
+<tr>
+
+<td>${item.name}</td>
+
+<td>${item.contact}</td>
+
+<td>${item.email}</td>
+
+<td>${item.address}</td>
+
+<td>${item.product}</td>
+
+<td class="good">
+Active
+</td>
+
+</tr>
+
+`;
+
+});
+
+}
+
+// =====================================
+// LOAD CARDS
+// =====================================
+
+function loadSupplierCards(){
+
+let suppliers =
+JSON.parse(
+localStorage.getItem('suppliers')
+) || [];
+
+let supplierCount =
+document.getElementById(
+'supplierCount'
+);
+
+if(supplierCount){
+
+supplierCount.innerText =
+suppliers.length;
+
+}
+
+}
+
+// =====================================
+// SEARCH SUPPLIER
+// =====================================
+
+function searchSupplier(){
+
+let input =
+document
+.getElementById(
+'searchSupplier'
+)
+.value
+.toLowerCase();
+
+let rows =
+document.querySelectorAll(
+'#supplierTable tr'
+);
+
+rows.forEach(row=>{
+
+let text =
+row.innerText.toLowerCase();
+
+row.style.display =
+text.includes(input)
+? ''
+: 'none';
+
+});
+
+}
+
+// =====================================
+// CLEAR FORM
+// =====================================
+
+function clearSupplierForm(){
+
+document.getElementById(
+'supplierName'
+).value = '';
+
+document.getElementById(
+'supplierContact'
+).value = '';
+
+document.getElementById(
+'supplierEmail'
+).value = '';
+
+document.getElementById(
+'supplierAddress'
+).value = '';
+
+document.getElementById(
+'supplierProduct'
+).value = '';
+
+}
+
+// =====================================
+// AUTO LOAD
+// =====================================
+
+document.addEventListener(
+'DOMContentLoaded',
+()=>{
+
+loadSuppliers();
+loadSupplierCards();
+
+}
+);
+
+</script>
+
+</body>
+</html>
