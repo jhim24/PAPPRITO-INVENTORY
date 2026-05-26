@@ -3,21 +3,25 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Production Module</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet"
+href="css/style.css">
 
 </head>
 <body>
 
-<!-- MOBILE BUTTON -->
+<!-- MOBILE MENU -->
 
-<button class="menu-toggle" onclick="toggleSidebar()">
+<button
+class="menu-toggle"
+onclick="toggleSidebar()">
 
 <i class="fa-solid fa-bars"></i>
 
@@ -209,12 +213,14 @@ Create Production
 
 <div class="form-grid">
 
+<!-- PRODUCTION NUMBER -->
+
 <input
 type="text"
 id="prodNo"
 placeholder="Production No">
 
-<!-- DYNAMIC RAW MATERIAL -->
+<!-- RAW MATERIAL DROPDOWN -->
 
 <select id="prodRawMaterial">
 
@@ -224,20 +230,28 @@ Select Raw Material
 
 </select>
 
+<!-- QUANTITY -->
+
 <input
 type="number"
 id="prodQty"
 placeholder="Raw Quantity Used (KG)">
+
+<!-- RECIPE -->
 
 <input
 type="number"
 id="prodRecipe"
 placeholder="Recipe Per Order (grams)">
 
+<!-- FINISHED PRODUCT -->
+
 <input
 type="text"
 id="prodFinished"
 placeholder="Finished Product">
+
+<!-- BUTTON -->
 
 <button
 class="save-btn"
@@ -284,45 +298,132 @@ Save Production
 
 </div>
 
+<!-- APP JS -->
+
 <script src="js/app.js"></script>
+
+<!-- PRODUCTION DROPDOWN -->
 
 <script>
 
-// LOAD RAW MATERIAL DROPDOWN
+// =============================
+// LOAD RAW MATERIALS
+// =============================
 
 function loadProductionDropdown(){
 
 let materials =
-JSON.parse(localStorage.getItem("rawMaterials")) || [];
+JSON.parse(
+localStorage.getItem("rawMaterials")
+) || [];
 
 let dropdown =
 document.getElementById("prodRawMaterial");
 
 if(!dropdown) return;
 
-dropdown.innerHTML =
-'<option value="">Select Raw Material</option>';
+// CLEAR EXISTING
+
+dropdown.innerHTML = "";
+
+// DEFAULT OPTION
+
+let defaultOption =
+document.createElement("option");
+
+defaultOption.value = "";
+defaultOption.textContent =
+"Select Raw Material";
+
+dropdown.appendChild(defaultOption);
+
+// LOOP MATERIALS
 
 materials.forEach(item=>{
 
-dropdown.innerHTML += `
+let option =
+document.createElement("option");
 
-<option value="${item.name}">
-${item.name}
-</option>
+option.value = item.name;
 
-`;
+option.textContent =
+item.name +
+" (" +
+item.stock +
+" " +
+item.unit +
+")";
+
+dropdown.appendChild(option);
 
 });
 
 }
 
-// AUTO LOAD
+// =============================
+// LOAD COUNTS
+// =============================
 
-document.addEventListener(
-"DOMContentLoaded",
-loadProductionDropdown
-);
+function loadProductionCounts(){
+
+let productions =
+JSON.parse(
+localStorage.getItem("productions")
+) || [];
+
+let finished =
+JSON.parse(
+localStorage.getItem("finishedProducts")
+) || [];
+
+let raw =
+JSON.parse(
+localStorage.getItem("rawMaterials")
+) || [];
+
+// PRODUCTION COUNT
+
+document.getElementById(
+"productionCount"
+).innerText =
+productions.length;
+
+// FINISHED PRODUCTS
+
+document.getElementById(
+"finishedCount"
+).innerText =
+finished.length;
+
+// USED MATERIALS
+
+let totalUsed = 0;
+
+productions.forEach(prod=>{
+
+totalUsed +=
+Number(prod.quantity);
+
+});
+
+document.getElementById(
+"usedMaterials"
+).innerText =
+totalUsed + "KG";
+
+}
+
+// =============================
+// AUTO LOAD
+// =============================
+
+window.onload = function(){
+
+loadProductionDropdown();
+
+loadProductionCounts();
+
+};
 
 </script>
 
