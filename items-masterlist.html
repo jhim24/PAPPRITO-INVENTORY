@@ -17,14 +17,31 @@ href="css/style.css">
 </head>
 <body>
 
+<!-- MOBILE BUTTON -->
+
+<button
+class="menu-toggle"
+onclick="toggleSidebar()">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
 <!-- SIDEBAR -->
 
 <div class="sidebar">
 
 <div class="logo">
 
+<div class="icon">
+
+<i class="fa-solid fa-boxes-stacked"></i>
+
+</div>
+
 <h1>PAPPRITO</h1>
-<p>Inventory System</p>
+
+<p>Items Masterlist</p>
 
 </div>
 
@@ -34,7 +51,7 @@ href="css/style.css">
 
 <a href="dashboard.html">
 
-<i class="fa fa-home"></i>
+<i class="fa-solid fa-chart-line"></i>
 <span>Dashboard</span>
 
 </a>
@@ -45,7 +62,7 @@ href="css/style.css">
 
 <a href="items-masterlist.html">
 
-<i class="fa fa-boxes-stacked"></i>
+<i class="fa-solid fa-boxes-stacked"></i>
 <span>Items Masterlist</span>
 
 </a>
@@ -54,21 +71,10 @@ href="css/style.css">
 
 <li>
 
-<a href="categories.html">
+<a href="raw-materials.html">
 
-<i class="fa fa-layer-group"></i>
-<span>Categories</span>
-
-</a>
-
-</li>
-
-<li>
-
-<a href="stock-in.html">
-
-<i class="fa fa-arrow-down"></i>
-<span>Stock In</span>
+<i class="fa-solid fa-drumstick-bite"></i>
+<span>Raw Materials</span>
 
 </a>
 
@@ -76,10 +82,32 @@ href="css/style.css">
 
 <li>
 
-<a href="stock-out.html">
+<a href="production.html">
 
-<i class="fa fa-arrow-up"></i>
-<span>Stock Out</span>
+<i class="fa-solid fa-gears"></i>
+<span>Production</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="finished-products.html">
+
+<i class="fa-solid fa-burger"></i>
+<span>Finished Products</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="sales.html">
+
+<i class="fa-solid fa-cash-register"></i>
+<span>Sales</span>
 
 </a>
 
@@ -89,8 +117,30 @@ href="css/style.css">
 
 <a href="reports.html">
 
-<i class="fa fa-chart-line"></i>
+<i class="fa-solid fa-file-lines"></i>
 <span>Reports</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="categories.html">
+
+<i class="fa-solid fa-layer-group"></i>
+<span>Categories</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="settings.html">
+
+<i class="fa-solid fa-gear"></i>
+<span>Settings</span>
 
 </a>
 
@@ -104,16 +154,56 @@ href="css/style.css">
 
 <div class="main">
 
-<!-- TOPBAR -->
-
 <div class="topbar">
 
 <h1>Items Masterlist</h1>
 
 <div class="admin">
 
-<i class="fa fa-user"></i>
+<i class="fa-solid fa-user"></i>
 Admin
+
+</div>
+
+</div>
+
+<!-- CARDS -->
+
+<div class="cards">
+
+<div class="card">
+
+<i class="fa-solid fa-box"></i>
+
+<h2 id="masterItemCount">
+0
+</h2>
+
+<p>Total Items</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-tags"></i>
+
+<h2 id="masterCategoryCount">
+0
+</h2>
+
+<p>Total Categories</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-warehouse"></i>
+
+<h2>
+Live
+</h2>
+
+<p>Inventory Database</p>
 
 </div>
 
@@ -125,8 +215,8 @@ Admin
 
 <div class="form-title">
 
-<i class="fa fa-box"></i>
-Add New Item
+<i class="fa-solid fa-plus"></i>
+Add Item
 
 </div>
 
@@ -134,52 +224,46 @@ Add New Item
 
 <input
 type="text"
-id="itemCode"
+id="masterCode"
 placeholder="Item Code">
 
 <input
 type="text"
-id="itemName"
+id="masterName"
 placeholder="Item Name">
 
-<select id="category">
+<select id="masterCategory">
 
 <option value="">
 Select Category
 </option>
 
+<option>Raw Material</option>
+<option>Finished Product</option>
+<option>Packaging</option>
+
 </select>
 
 <input
 type="text"
-id="unit"
+id="masterUnit"
 placeholder="Unit">
 
 <input
 type="number"
-id="stock"
-placeholder="Beginning Stock">
-
-<input
-type="number"
-id="cost"
-placeholder="Cost Price">
-
-<input
-type="number"
-id="selling"
-placeholder="Selling Price">
+id="masterCost"
+placeholder="Cost">
 
 <input
 type="text"
-id="supplier"
+id="masterSupplier"
 placeholder="Supplier">
 
 <button
 class="save-btn"
-onclick="saveItem()">
+onclick="saveMasterItem()">
 
-<i class="fa fa-floppy-disk"></i>
+<i class="fa-solid fa-floppy-disk"></i>
 Save Item
 
 </button>
@@ -190,13 +274,13 @@ Save Item
 
 <!-- SEARCH -->
 
-<div class="search">
+<div class="search-box">
 
 <input
 type="text"
-id="searchInput"
+id="searchMaster"
 placeholder="Search Item..."
-onkeyup="searchItem()">
+onkeyup="searchMasterItem()">
 
 </div>
 
@@ -214,9 +298,7 @@ onkeyup="searchItem()">
 <th>Item Name</th>
 <th>Category</th>
 <th>Unit</th>
-<th>Stock</th>
 <th>Cost</th>
-<th>Selling</th>
 <th>Supplier</th>
 <th>Actions</th>
 
@@ -224,7 +306,7 @@ onkeyup="searchItem()">
 
 </thead>
 
-<tbody id="itemTable">
+<tbody id="masterTable">
 
 </tbody>
 
