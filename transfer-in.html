@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Transfer In</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet"
+href="css/style.css">
+
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+
+<button
+class="menu-toggle"
+onclick="toggleSidebar()">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="logo">
+
+<div class="icon">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+
+</div>
+
+<h1>PAPPRITO</h1>
+
+<p>Transfer In Module</p>
+
+</div>
+
+<ul class="menu">
+
+<li>
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-chart-line"></i>
+<span>Dashboard</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="items-masterlist.html">
+
+<i class="fa-solid fa-boxes-stacked"></i>
+<span>Items Masterlist</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="categories.html">
+
+<i class="fa-solid fa-layer-group"></i>
+<span>Category</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="raw-materials.html">
+
+<i class="fa-solid fa-drumstick-bite"></i>
+<span>Raw Materials</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="production.html">
+
+<i class="fa-solid fa-gears"></i>
+<span>Production</span>
+
+</a>
+
+</li>
+
+<li class="active">
+
+<a href="transfer-in.html">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+<span>Transfer In</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="transfer-out.html">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+<span>Transfer Out</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="finished-inventory.html">
+
+<i class="fa-solid fa-burger"></i>
+<span>Finished Inventory</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="sales.html">
+
+<i class="fa-solid fa-cash-register"></i>
+<span>Sales</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="supplier.html">
+
+<i class="fa-solid fa-truck"></i>
+<span>Supplier</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="purchase.html">
+
+<i class="fa-solid fa-cart-shopping"></i>
+<span>Purchase</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="reports.html">
+
+<i class="fa-solid fa-file-lines"></i>
+<span>Reports</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="settings.html">
+
+<i class="fa-solid fa-gear"></i>
+<span>Settings</span>
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+<h1>Transfer In</h1>
+
+<div class="admin">
+
+<i class="fa-solid fa-user"></i>
+Admin
+
+</div>
+
+</div>
+
+<!-- CARDS -->
+
+<div class="cards">
+
+<div class="card">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+
+<h2 id="transferInCount">
+0
+</h2>
+
+<p>Total Transfers</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-box"></i>
+
+<h2 id="transferInItems">
+0
+</h2>
+
+<p>Total Inventory In</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-warehouse"></i>
+
+<h2>
+Ready
+</h2>
+
+<p>Inventory Movement</p>
+
+</div>
+
+</div>
+
+<!-- TABLE -->
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Production No</th>
+<th>Finished Product</th>
+<th>Output</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="transferTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script src="js/app.js"></script>
+
+<script>
+
+// =====================================
+// LOAD TRANSFER TABLE
+// =====================================
+
+function loadTransferTable(){
+
+let productions =
+JSON.parse(
+localStorage.getItem('productions')
+) || [];
+
+let transferIn =
+JSON.parse(
+localStorage.getItem('transferIn')
+) || [];
+
+let table =
+document.getElementById(
+'transferTable'
+);
+
+if(!table) return;
+
+table.innerHTML = '';
+
+productions.forEach((item,index)=>{
+
+let alreadyTransferred =
+transferIn.find(
+t => t.prodNo === item.prodNo
+);
+
+let status =
+alreadyTransferred
+? 'Transferred'
+: 'Pending';
+
+let statusClass =
+alreadyTransferred
+? 'good'
+: 'warning';
+
+table.innerHTML += `
+
+<tr>
+
+<td>${item.prodNo}</td>
+
+<td>${item.finishedProduct}</td>
+
+<td>${item.output}</td>
+
+<td class="${statusClass}">
+${status}
+</td>
+
+<td>
+
+${
+alreadyTransferred
+? '<button class="action-btn edit">Completed</button>'
+: `<button
+class="action-btn delete"
+onclick="transferInventory(${index})">
+
+Transfer In
+
+</button>`
+}
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+loadTransferCards();
+
+}
+
+// =====================================
+// TRANSFER INVENTORY
+// =====================================
+
+function transferInventory(index){
+
+let productions =
+JSON.parse(
+localStorage.getItem('productions')
+) || [];
+
+let transferIn =
+JSON.parse(
+localStorage.getItem('transferIn')
+) || [];
+
+let finishedInventory =
+JSON.parse(
+localStorage.getItem('finishedInventory')
+) || [];
+
+let item = productions[index];
+
+if(!item) return;
+
+let existing =
+transferIn.find(
+t => t.prodNo === item.prodNo
+);
+
+if(existing){
+
+alert('Already transferred');
+return;
+
+}
+
+// SAVE TRANSFER
+
+transferIn.push({
+
+prodNo:item.prodNo,
+finishedProduct:item.finishedProduct,
+output:item.output,
+date:new Date().toLocaleString()
+
+});
+
+localStorage.setItem(
+'transferIn',
+JSON.stringify(transferIn)
+);
+
+// SAVE FINISHED INVENTORY
+
+let inventoryExisting =
+finishedInventory.find(
+f => f.name === item.finishedProduct
+);
+
+if(inventoryExisting){
+
+inventoryExisting.stock =
+Number(inventoryExisting.stock) +
+Number(item.output);
+
+}else{
+
+finishedInventory.push({
+
+code:'FIN-' + Date.now(),
+name:item.finishedProduct,
+stock:item.output,
+category:'Finished Product'
+
+});
+
+}
+
+localStorage.setItem(
+'finishedInventory',
+JSON.stringify(finishedInventory)
+);
+
+alert('Transferred to Finished Inventory');
+
+loadTransferTable();
+
+}
+
+// =====================================
+// LOAD CARDS
+// =====================================
+
+function loadTransferCards(){
+
+let transferIn =
+JSON.parse(
+localStorage.getItem('transferIn')
+) || [];
+
+let totalItems = 0;
+
+transferIn.forEach(item=>{
+
+totalItems += Number(item.output);
+
+});
+
+let transferInCount =
+document.getElementById(
+'transferInCount'
+);
+
+let transferInItems =
+document.getElementById(
+'transferInItems'
+);
+
+if(transferInCount){
+
+transferInCount.innerText =
+transferIn.length;
+
+}
+
+if(transferInItems){
+
+transferInItems.innerText =
+totalItems;
+
+}
+
+}
+
+// =====================================
+// AUTO LOAD
+// =====================================
+
+document.addEventListener(
+'DOMContentLoaded',
+()=>{
+
+loadTransferTable();
+
+}
+);
+
+</script>
+
+</body>
+</html>
