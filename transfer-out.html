@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Transfer Out</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet"
+href="css/style.css">
+
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+
+<button
+class="menu-toggle"
+onclick="toggleSidebar()">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="logo">
+
+<div class="icon">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+</div>
+
+<h1>PAPPRITO</h1>
+
+<p>Transfer Out Module</p>
+
+</div>
+
+<ul class="menu">
+
+<li>
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-chart-line"></i>
+<span>Dashboard</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="items-masterlist.html">
+
+<i class="fa-solid fa-boxes-stacked"></i>
+<span>Items Masterlist</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="categories.html">
+
+<i class="fa-solid fa-layer-group"></i>
+<span>Category</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="raw-materials.html">
+
+<i class="fa-solid fa-drumstick-bite"></i>
+<span>Raw Materials</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="production.html">
+
+<i class="fa-solid fa-gears"></i>
+<span>Production</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="transfer-in.html">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+<span>Transfer In</span>
+
+</a>
+
+</li>
+
+<li class="active">
+
+<a href="transfer-out.html">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+<span>Transfer Out</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="finished-inventory.html">
+
+<i class="fa-solid fa-burger"></i>
+<span>Finished Inventory</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="sales.html">
+
+<i class="fa-solid fa-cash-register"></i>
+<span>Sales</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="supplier.html">
+
+<i class="fa-solid fa-truck"></i>
+<span>Supplier</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="purchase.html">
+
+<i class="fa-solid fa-cart-shopping"></i>
+<span>Purchase</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="reports.html">
+
+<i class="fa-solid fa-file-lines"></i>
+<span>Reports</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="settings.html">
+
+<i class="fa-solid fa-gear"></i>
+<span>Settings</span>
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+<h1>Transfer Out</h1>
+
+<div class="admin">
+
+<i class="fa-solid fa-user"></i>
+Admin
+
+</div>
+
+</div>
+
+<!-- CARDS -->
+
+<div class="cards">
+
+<div class="card">
+
+<i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+<h2 id="transferOutCount">
+0
+</h2>
+
+<p>Total Transfers</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-box-open"></i>
+
+<h2 id="transferOutItems">
+0
+</h2>
+
+<p>Total Released</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-triangle-exclamation"></i>
+
+<h2>
+Live
+</h2>
+
+<p>Inventory Monitoring</p>
+
+</div>
+
+</div>
+
+<!-- FORM -->
+
+<div class="form-box">
+
+<div class="form-title">
+
+<i class="fa-solid fa-plus"></i>
+Transfer Out Inventory
+
+</div>
+
+<div class="form-grid">
+
+<!-- PRODUCT -->
+
+<select id="transferOutProduct">
+
+<option value="">
+Select Product
+</option>
+
+</select>
+
+<!-- QUANTITY -->
+
+<input
+type="number"
+id="transferOutQty"
+placeholder="Quantity">
+
+<!-- DESTINATION -->
+
+<input
+type="text"
+id="transferOutDestination"
+placeholder="Destination / Branch">
+
+<!-- REASON -->
+
+<select id="transferOutReason">
+
+<option value="">
+Select Reason
+</option>
+
+<option>Branch Transfer</option>
+<option>Damage</option>
+<option>Pull Out</option>
+<option>Adjustment</option>
+
+</select>
+
+<!-- BUTTON -->
+
+<button
+class="save-btn"
+onclick="saveTransferOut()">
+
+<i class="fa-solid fa-floppy-disk"></i>
+Transfer Out
+
+</button>
+
+</div>
+
+</div>
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchTransferOut"
+placeholder="Search Transfer Out..."
+onkeyup="searchTransferOut()">
+
+</div>
+
+<!-- TABLE -->
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Product</th>
+<th>Quantity</th>
+<th>Destination</th>
+<th>Reason</th>
+<th>Date</th>
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody id="transferOutTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script src="js/app.js"></script>
+
+<script>
+
+// =====================================
+// LOAD FINISHED INVENTORY
+// =====================================
+
+function loadTransferOutDropdown(){
+
+let inventory =
+JSON.parse(
+localStorage.getItem('finishedInventory')
+) || [];
+
+let dropdown =
+document.getElementById(
+'transferOutProduct'
+);
+
+if(!dropdown) return;
+
+dropdown.innerHTML =
+'<option value="">Select Product</option>';
+
+inventory.forEach(item=>{
+
+dropdown.innerHTML += `
+
+<option value="${item.name}">
+${item.name} (${item.stock})
+</option>
+
+`;
+
+});
+
+}
+
+// =====================================
+// SAVE TRANSFER OUT
+// =====================================
+
+function saveTransferOut(){
+
+let product =
+document.getElementById(
+'transferOutProduct'
+).value;
+
+let qty =
+document.getElementById(
+'transferOutQty'
+).value;
+
+let destination =
+document.getElementById(
+'transferOutDestination'
+).value;
+
+let reason =
+document.getElementById(
+'transferOutReason'
+).value;
+
+if(
+product === '' ||
+qty === '' ||
+destination === '' ||
+reason === ''
+){
+alert('Please complete all fields');
+return;
+}
+
+let inventory =
+JSON.parse(
+localStorage.getItem('finishedInventory')
+) || [];
+
+let transferOut =
+JSON.parse(
+localStorage.getItem('transferOut')
+) || [];
+
+let item =
+inventory.find(
+i => i.name === product
+);
+
+if(!item){
+
+alert('Product not found');
+return;
+
+}
+
+if(Number(qty) > Number(item.stock)){
+
+alert('Not enough inventory');
+return;
+
+}
+
+// DEDUCT INVENTORY
+
+item.stock =
+Number(item.stock) -
+Number(qty);
+
+localStorage.setItem(
+'finishedInventory',
+JSON.stringify(inventory)
+);
+
+// SAVE TRANSFER
+
+transferOut.push({
+
+product,
+qty,
+destination,
+reason,
+date:new Date().toLocaleString()
+
+});
+
+localStorage.setItem(
+'transferOut',
+JSON.stringify(transferOut)
+);
+
+alert('Transfer Out Saved');
+
+clearTransferOutForm();
+
+loadTransferOutTable();
+loadTransferOutDropdown();
+loadTransferOutCards();
+
+}
+
+// =====================================
+// LOAD TABLE
+// =====================================
+
+function loadTransferOutTable(){
+
+let table =
+document.getElementById(
+'transferOutTable'
+);
+
+if(!table) return;
+
+let transferOut =
+JSON.parse(
+localStorage.getItem('transferOut')
+) || [];
+
+table.innerHTML = '';
+
+transferOut.forEach(item=>{
+
+table.innerHTML += `
+
+<tr>
+
+<td>${item.product}</td>
+<td>${item.qty}</td>
+<td>${item.destination}</td>
+<td>${item.reason}</td>
+<td>${item.date}</td>
+<td class="good">Completed</td>
+
+</tr>
+
+`;
+
+});
+
+}
+
+// =====================================
+// LOAD CARDS
+// =====================================
+
+function loadTransferOutCards(){
+
+let transferOut =
+JSON.parse(
+localStorage.getItem('transferOut')
+) || [];
+
+let total = 0;
+
+transferOut.forEach(item=>{
+
+total += Number(item.qty);
+
+});
+
+let transferOutCount =
+document.getElementById(
+'transferOutCount'
+);
+
+let transferOutItems =
+document.getElementById(
+'transferOutItems'
+);
+
+if(transferOutCount){
+
+transferOutCount.innerText =
+transferOut.length;
+
+}
+
+if(transferOutItems){
+
+transferOutItems.innerText =
+total;
+
+}
+
+}
+
+// =====================================
+// SEARCH
+// =====================================
+
+function searchTransferOut(){
+
+let input =
+document
+.getElementById(
+'searchTransferOut'
+)
+.value
+.toLowerCase();
+
+let rows =
+document.querySelectorAll(
+'#transferOutTable tr'
+);
+
+rows.forEach(row=>{
+
+let text =
+row.innerText.toLowerCase();
+
+row.style.display =
+text.includes(input)
+? ''
+: 'none';
+
+});
+
+}
+
+// =====================================
+// CLEAR FORM
+// =====================================
+
+function clearTransferOutForm(){
+
+document.getElementById(
+'transferOutProduct'
+).value = '';
+
+document.getElementById(
+'transferOutQty'
+).value = '';
+
+document.getElementById(
+'transferOutDestination'
+).value = '';
+
+document.getElementById(
+'transferOutReason'
+).value = '';
+
+}
+
+// =====================================
+// AUTO LOAD
+// =====================================
+
+document.addEventListener(
+'DOMContentLoaded',
+()=>{
+
+loadTransferOutDropdown();
+loadTransferOutTable();
+loadTransferOutCards();
+
+}
+);
+
+</script>
+
+</body>
+</html>
