@@ -3,6 +3,7 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
@@ -41,7 +42,7 @@ onclick="toggleSidebar()">
 
 <h1>PAPPRITO</h1>
 
-<p>Production System</p>
+<p>Production Module</p>
 
 </div>
 
@@ -53,6 +54,28 @@ onclick="toggleSidebar()">
 
 <i class="fa-solid fa-chart-line"></i>
 <span>Dashboard</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="items-masterlist.html">
+
+<i class="fa-solid fa-boxes-stacked"></i>
+<span>Items Masterlist</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="categories.html">
+
+<i class="fa-solid fa-layer-group"></i>
+<span>Category</span>
 
 </a>
 
@@ -82,10 +105,32 @@ onclick="toggleSidebar()">
 
 <li>
 
-<a href="finished-products.html">
+<a href="transfer-in.html">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+<span>Transfer In</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="transfer-out.html">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+<span>Transfer Out</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="finished-inventory.html">
 
 <i class="fa-solid fa-burger"></i>
-<span>Finished Products</span>
+<span>Finished Inventory</span>
 
 </a>
 
@@ -104,10 +149,10 @@ onclick="toggleSidebar()">
 
 <li>
 
-<a href="reports.html">
+<a href="supplier.html">
 
-<i class="fa-solid fa-file-lines"></i>
-<span>Reports</span>
+<i class="fa-solid fa-truck"></i>
+<span>Supplier</span>
 
 </a>
 
@@ -115,10 +160,21 @@ onclick="toggleSidebar()">
 
 <li>
 
-<a href="categories.html">
+<a href="purchase.html">
 
-<i class="fa-solid fa-layer-group"></i>
-<span>Categories</span>
+<i class="fa-solid fa-cart-shopping"></i>
+<span>Purchase</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="reports.html">
+
+<i class="fa-solid fa-file-lines"></i>
+<span>Reports</span>
 
 </a>
 
@@ -170,7 +226,7 @@ Admin
 0
 </h2>
 
-<p>Total Production</p>
+<p>Total Productions</p>
 
 </div>
 
@@ -178,11 +234,11 @@ Admin
 
 <i class="fa-solid fa-burger"></i>
 
-<h2 id="finishedCount">
+<h2 id="productionOutputCount">
 0
 </h2>
 
-<p>Finished Products</p>
+<p>Production Outputs</p>
 
 </div>
 
@@ -194,7 +250,7 @@ Admin
 0
 </h2>
 
-<p>Materials Used</p>
+<p>Used Materials</p>
 
 </div>
 
@@ -206,21 +262,19 @@ Admin
 
 <div class="form-title">
 
-<i class="fa-solid fa-gears"></i>
+<i class="fa-solid fa-plus"></i>
 Create Production
 
 </div>
 
 <div class="form-grid">
 
-<!-- PRODUCTION NUMBER -->
-
 <input
 type="text"
 id="prodNo"
 placeholder="Production No">
 
-<!-- RAW MATERIAL DROPDOWN -->
+<!-- RAW MATERIAL -->
 
 <select id="prodRawMaterial">
 
@@ -235,7 +289,7 @@ Select Raw Material
 <input
 type="number"
 id="prodQty"
-placeholder="Raw Quantity Used (KG)">
+placeholder="Quantity Used (KG)">
 
 <!-- RECIPE -->
 
@@ -249,7 +303,7 @@ placeholder="Recipe Per Order (grams)">
 <input
 type="text"
 id="prodFinished"
-placeholder="Finished Product">
+placeholder="Finished Product Name">
 
 <!-- BUTTON -->
 
@@ -263,6 +317,18 @@ Save Production
 </button>
 
 </div>
+
+</div>
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchProduction"
+placeholder="Search Production..."
+onkeyup="searchProduction()">
 
 </div>
 
@@ -298,132 +364,113 @@ Save Production
 
 </div>
 
-<!-- APP JS -->
-
 <script src="js/app.js"></script>
-
-<!-- PRODUCTION DROPDOWN -->
 
 <script>
 
-// =============================
-// LOAD RAW MATERIALS
-// =============================
+// =====================================
+// SEARCH PRODUCTION
+// =====================================
 
-function loadProductionDropdown(){
+function searchProduction(){
 
-let materials =
-JSON.parse(
-localStorage.getItem("rawMaterials")
-) || [];
+let input =
+document
+.getElementById('searchProduction')
+.value
+.toLowerCase();
 
-let dropdown =
-document.getElementById("prodRawMaterial");
+let rows =
+document.querySelectorAll(
+'#productionTable tr'
+);
 
-if(!dropdown) return;
+rows.forEach(row=>{
 
-// CLEAR EXISTING
+let text =
+row.innerText.toLowerCase();
 
-dropdown.innerHTML = "";
-
-// DEFAULT OPTION
-
-let defaultOption =
-document.createElement("option");
-
-defaultOption.value = "";
-defaultOption.textContent =
-"Select Raw Material";
-
-dropdown.appendChild(defaultOption);
-
-// LOOP MATERIALS
-
-materials.forEach(item=>{
-
-let option =
-document.createElement("option");
-
-option.value = item.name;
-
-option.textContent =
-item.name +
-" (" +
-item.stock +
-" " +
-item.unit +
-")";
-
-dropdown.appendChild(option);
+row.style.display =
+text.includes(input)
+? ''
+: 'none';
 
 });
 
 }
 
-// =============================
+// =====================================
 // LOAD COUNTS
-// =============================
+// =====================================
 
-function loadProductionCounts(){
+function loadProductionCards(){
 
 let productions =
 JSON.parse(
-localStorage.getItem("productions")
+localStorage.getItem('productions')
 ) || [];
 
-let finished =
-JSON.parse(
-localStorage.getItem("finishedProducts")
-) || [];
-
-let raw =
-JSON.parse(
-localStorage.getItem("rawMaterials")
-) || [];
-
-// PRODUCTION COUNT
-
-document.getElementById(
-"productionCount"
-).innerText =
-productions.length;
-
-// FINISHED PRODUCTS
-
-document.getElementById(
-"finishedCount"
-).innerText =
-finished.length;
-
-// USED MATERIALS
-
+let totalOutput = 0;
 let totalUsed = 0;
 
-productions.forEach(prod=>{
+productions.forEach(item=>{
 
-totalUsed +=
-Number(prod.quantity);
+totalOutput += Number(item.output);
+totalUsed += Number(item.quantity);
 
 });
 
+let productionCount =
 document.getElementById(
-"usedMaterials"
-).innerText =
-totalUsed + "KG";
+'productionCount'
+);
+
+let productionOutputCount =
+document.getElementById(
+'productionOutputCount'
+);
+
+let usedMaterials =
+document.getElementById(
+'usedMaterials'
+);
+
+if(productionCount){
+
+productionCount.innerText =
+productions.length;
 
 }
 
-// =============================
-// AUTO LOAD
-// =============================
+if(productionOutputCount){
 
-window.onload = function(){
+productionOutputCount.innerText =
+totalOutput;
+
+}
+
+if(usedMaterials){
+
+usedMaterials.innerText =
+totalUsed + 'KG';
+
+}
+
+}
+
+// =====================================
+// AUTO LOAD
+// =====================================
+
+document.addEventListener(
+'DOMContentLoaded',
+()=>{
 
 loadProductionDropdown();
+loadProductionCards();
 
-loadProductionCounts();
-
-};
+}
+);
 
 </script>
 
