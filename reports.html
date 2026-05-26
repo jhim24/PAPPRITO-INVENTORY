@@ -7,259 +7,26 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Reports</title>
-
-<!-- FONT AWESOME -->
+<title>Reports Module</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<style>
-
-/* RESET */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
-
-/* BODY */
-
-body{
-background:#dfeef2;
-display:flex;
-min-height:100vh;
-}
-
-/* SIDEBAR */
-
-.sidebar{
-width:260px;
-background:linear-gradient(to bottom,#d40000,#900000);
-color:white;
-padding:20px;
-position:fixed;
-height:100%;
-overflow:auto;
-}
-
-/* LOGO */
-
-.logo{
-text-align:center;
-margin-bottom:40px;
-}
-
-.logo .icon{
-width:80px;
-height:80px;
-background:white;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-margin:auto;
-margin-bottom:15px;
-}
-
-.logo .icon i{
-font-size:35px;
-color:#c40000;
-}
-
-.logo h1{
-font-size:30px;
-color:#ffd700;
-}
-
-.logo p{
-font-size:14px;
-color:#eee;
-}
-
-/* MENU */
-
-.menu{
-list-style:none;
-}
-
-.menu li{
-margin-bottom:10px;
-border-radius:12px;
-overflow:hidden;
-transition:0.3s;
-}
-
-.menu li a{
-display:flex;
-align-items:center;
-gap:12px;
-padding:15px;
-text-decoration:none;
-color:white;
-font-size:15px;
-}
-
-.menu li:hover{
-background:#ffd700;
-}
-
-.menu li:hover a{
-color:black;
-}
-
-.active{
-background:#ffd700;
-}
-
-.active a{
-color:black !important;
-}
-
-/* MAIN */
-
-.main{
-margin-left:260px;
-width:100%;
-padding:25px;
-}
-
-/* TOPBAR */
-
-.topbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:25px;
-flex-wrap:wrap;
-gap:15px;
-}
-
-.topbar h1{
-font-size:32px;
-color:#c40000;
-}
-
-.admin{
-background:white;
-padding:10px 18px;
-border-radius:12px;
-font-weight:bold;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* CARDS */
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-margin-bottom:25px;
-}
-
-.card{
-background:white;
-padding:25px;
-border-radius:20px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-.card i{
-font-size:35px;
-color:#c40000;
-margin-bottom:15px;
-}
-
-.card h2{
-font-size:30px;
-margin-bottom:10px;
-}
-
-.card p{
-color:#666;
-}
-
-/* TABLE */
-
-.table-container{
-background:white;
-border-radius:20px;
-overflow:auto;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-margin-bottom:25px;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-min-width:1000px;
-}
-
-thead{
-background:#c40000;
-color:white;
-}
-
-th{
-padding:16px;
-text-align:left;
-}
-
-td{
-padding:16px;
-border-bottom:1px solid #eee;
-}
-
-tbody tr:hover{
-background:#fafafa;
-}
-
-/* STATUS */
-
-.good{
-color:green;
-font-weight:bold;
-}
-
-.low{
-color:red;
-font-weight:bold;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.sidebar{
-width:85px;
-}
-
-.logo h1,
-.logo p,
-.menu li a span{
-display:none;
-}
-
-.main{
-margin-left:85px;
-}
-
-}
-
-@media(max-width:600px){
-
-.cards{
-grid-template-columns:1fr;
-}
-
-}
-
-</style>
+<link rel="stylesheet"
+href="css/style.css">
 
 </head>
 <body>
+
+<!-- MOBILE MENU -->
+
+<button
+class="menu-toggle"
+onclick="toggleSidebar()">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
 
 <!-- SIDEBAR -->
 
@@ -275,7 +42,7 @@ grid-template-columns:1fr;
 
 <h1>PAPPRITO</h1>
 
-<p>Reports System</p>
+<p>Reports Module</p>
 
 </div>
 
@@ -287,6 +54,28 @@ grid-template-columns:1fr;
 
 <i class="fa-solid fa-chart-line"></i>
 <span>Dashboard</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="items-masterlist.html">
+
+<i class="fa-solid fa-boxes-stacked"></i>
+<span>Items Masterlist</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="categories.html">
+
+<i class="fa-solid fa-layer-group"></i>
+<span>Category</span>
 
 </a>
 
@@ -316,10 +105,32 @@ grid-template-columns:1fr;
 
 <li>
 
-<a href="finished-products.html">
+<a href="transfer-in.html">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+<span>Transfer In</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="transfer-out.html">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+<span>Transfer Out</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="finished-inventory.html">
 
 <i class="fa-solid fa-burger"></i>
-<span>Finished Products</span>
+<span>Finished Inventory</span>
 
 </a>
 
@@ -336,12 +147,45 @@ grid-template-columns:1fr;
 
 </li>
 
+<li>
+
+<a href="supplier.html">
+
+<i class="fa-solid fa-truck"></i>
+<span>Supplier</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="purchase.html">
+
+<i class="fa-solid fa-cart-shopping"></i>
+<span>Purchase</span>
+
+</a>
+
+</li>
+
 <li class="active">
 
 <a href="reports.html">
 
 <i class="fa-solid fa-file-lines"></i>
 <span>Reports</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="settings.html">
+
+<i class="fa-solid fa-gear"></i>
+<span>Settings</span>
 
 </a>
 
@@ -359,7 +203,7 @@ grid-template-columns:1fr;
 
 <div class="topbar">
 
-<h1>Inventory Reports</h1>
+<h1>Reports Module</h1>
 
 <div class="admin">
 
@@ -378,9 +222,23 @@ Admin
 
 <i class="fa-solid fa-peso-sign"></i>
 
-<h2>₱45,500</h2>
+<h2 id="reportSales">
+₱0
+</h2>
 
-<p>Total Sales Today</p>
+<p>Total Sales</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-box"></i>
+
+<h2 id="reportRaw">
+0
+</h2>
+
+<p>Raw Materials</p>
 
 </div>
 
@@ -388,35 +246,29 @@ Admin
 
 <i class="fa-solid fa-burger"></i>
 
-<h2>520</h2>
+<h2 id="reportFinished">
+0
+</h2>
 
-<p>Total Orders Sold</p>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-triangle-exclamation"></i>
-
-<h2>8</h2>
-
-<p>Low Stock Materials</p>
+<p>Finished Inventory</p>
 
 </div>
 
 <div class="card">
 
-<i class="fa-solid fa-chart-column"></i>
+<i class="fa-solid fa-gears"></i>
 
-<h2>95%</h2>
+<h2 id="reportProduction">
+0
+</h2>
 
-<p>Production Efficiency</p>
+<p>Production Records</p>
 
 </div>
 
 </div>
 
-<!-- SALES REPORT -->
+<!-- REPORTS TABLE -->
 
 <div class="table-container">
 
@@ -426,85 +278,15 @@ Admin
 
 <tr>
 
-<th>Receipt No</th>
-<th>Product</th>
-<th>Qty</th>
+<th>Report Type</th>
 <th>Total</th>
-<th>Cashier</th>
 <th>Status</th>
 
 </tr>
 
 </thead>
 
-<tbody>
-
-<tr>
-
-<td>OR-001</td>
-<td>Beef Shawarma</td>
-<td>2</td>
-<td>₱240</td>
-<td>Admin</td>
-<td class="good">Paid</td>
-
-</tr>
-
-<tr>
-
-<td>OR-002</td>
-<td>Zinger Burger</td>
-<td>3</td>
-<td>₱450</td>
-<td>Cashier 1</td>
-<td class="good">Paid</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-<!-- LOW STOCK REPORT -->
-
-<div class="table-container">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Raw Material</th>
-<th>Remaining Stock</th>
-<th>Supplier</th>
-<th>Status</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td>Cheese Sauce</td>
-<td>2 Liters</td>
-<td>Sauce Supplier</td>
-<td class="low">Low Stock</td>
-
-</tr>
-
-<tr>
-
-<td>Chicken</td>
-<td>3 KG</td>
-<td>Fresh Meat Supplier</td>
-<td class="low">Low Stock</td>
-
-</tr>
+<tbody id="reportsTable">
 
 </tbody>
 
@@ -513,6 +295,188 @@ Admin
 </div>
 
 </div>
+
+<script src="js/app.js"></script>
+
+<script>
+
+// =====================================
+// LOAD REPORTS
+// =====================================
+
+function loadReports(){
+
+let sales =
+JSON.parse(
+localStorage.getItem('sales')
+) || [];
+
+let rawMaterials =
+JSON.parse(
+localStorage.getItem('rawMaterials')
+) || [];
+
+let finishedInventory =
+JSON.parse(
+localStorage.getItem('finishedInventory')
+) || [];
+
+let productions =
+JSON.parse(
+localStorage.getItem('productions')
+) || [];
+
+// TOTAL SALES
+
+let totalSales = 0;
+
+sales.forEach(item=>{
+
+totalSales +=
+Number(item.total);
+
+});
+
+// FINISHED INVENTORY
+
+let totalFinished = 0;
+
+finishedInventory.forEach(item=>{
+
+totalFinished +=
+Number(item.stock);
+
+});
+
+// REPORT CARDS
+
+document.getElementById(
+'reportSales'
+).innerText =
+'₱' + totalSales;
+
+document.getElementById(
+'reportRaw'
+).innerText =
+rawMaterials.length;
+
+document.getElementById(
+'reportFinished'
+).innerText =
+totalFinished;
+
+document.getElementById(
+'reportProduction'
+).innerText =
+productions.length;
+
+// TABLE
+
+let table =
+document.getElementById(
+'reportsTable'
+);
+
+table.innerHTML = `
+
+<tr>
+
+<td>Sales Report</td>
+<td>₱${totalSales}</td>
+<td class="good">Updated</td>
+
+</tr>
+
+<tr>
+
+<td>Raw Materials</td>
+<td>${rawMaterials.length}</td>
+<td class="good">Updated</td>
+
+</tr>
+
+<tr>
+
+<td>Finished Inventory</td>
+<td>${totalFinished}</td>
+<td class="good">Updated</td>
+
+</tr>
+
+<tr>
+
+<td>Production Records</td>
+<td>${productions.length}</td>
+<td class="good">Updated</td>
+
+</tr>
+
+<tr>
+
+<td>Transfer In</td>
+<td>${
+JSON.parse(
+localStorage.getItem('transferIn')
+) || []
+.length
+}</td>
+
+<td class="good">
+Updated
+</td>
+
+</tr>
+
+<tr>
+
+<td>Transfer Out</td>
+<td>${
+JSON.parse(
+localStorage.getItem('transferOut')
+) || []
+.length
+}</td>
+
+<td class="good">
+Updated
+</td>
+
+</tr>
+
+<tr>
+
+<td>Purchase Records</td>
+<td>${
+JSON.parse(
+localStorage.getItem('purchases')
+) || []
+.length
+}</td>
+
+<td class="good">
+Updated
+</td>
+
+</tr>
+
+`;
+
+}
+
+// =====================================
+// AUTO LOAD
+// =====================================
+
+document.addEventListener(
+'DOMContentLoaded',
+()=>{
+
+loadReports();
+
+}
+);
+
+</script>
 
 </body>
 </html>
