@@ -690,6 +690,6 @@ loadFinishedProducts();
 loadProductions();
 loadSales();
 loadDashboardCounts();
-
+loadProductionDropdown?.();
 }
 );
