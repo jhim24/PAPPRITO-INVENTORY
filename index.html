@@ -7,197 +7,34 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>PAPPRITO Inventory Login</title>
+<title>PAPPRITO Inventory System</title>
 
 <!-- FONT AWESOME -->
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<style>
+<!-- CSS -->
 
-/* RESET */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
-
-/* BODY */
-
-body{
-height:100vh;
-background:#dfeef2;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-}
-
-/* CONTAINER */
-
-.login-container{
-width:100%;
-max-width:420px;
-}
-
-/* LOGIN CARD */
-
-.login-box{
-background:white;
-padding:35px;
-border-radius:25px;
-box-shadow:0 5px 20px rgba(0,0,0,0.1);
-}
-
-/* LOGO */
-
-.logo{
-text-align:center;
-margin-bottom:30px;
-}
-
-.logo .icon{
-width:90px;
-height:90px;
-background:linear-gradient(to bottom,#d40000,#900000);
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-margin:auto;
-margin-bottom:15px;
-}
-
-.logo .icon i{
-font-size:40px;
-color:#ffd700;
-}
-
-.logo h1{
-font-size:32px;
-color:#c40000;
-margin-bottom:5px;
-}
-
-.logo p{
-color:#666;
-font-size:15px;
-}
-
-/* INPUTS */
-
-.input-group{
-margin-bottom:20px;
-}
-
-.input-group label{
-display:block;
-margin-bottom:8px;
-font-weight:600;
-color:#444;
-}
-
-.input-box{
-display:flex;
-align-items:center;
-background:#f5f5f5;
-border-radius:12px;
-padding:0 15px;
-border:1px solid #ddd;
-transition:0.3s;
-}
-
-.input-box:focus-within{
-border-color:#c40000;
-background:white;
-}
-
-.input-box i{
-color:#c40000;
-font-size:18px;
-margin-right:10px;
-}
-
-.input-box input{
-width:100%;
-padding:15px 0;
-border:none;
-outline:none;
-background:none;
-font-size:15px;
-}
-
-/* BUTTON */
-
-.login-btn{
-width:100%;
-padding:15px;
-border:none;
-border-radius:12px;
-background:linear-gradient(to right,#d40000,#900000);
-color:white;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-transition:0.3s;
-}
-
-.login-btn:hover{
-opacity:0.9;
-transform:translateY(-2px);
-}
-
-/* FOOTER */
-
-.footer{
-margin-top:20px;
-text-align:center;
-font-size:14px;
-color:#777;
-}
-
-/* MOBILE */
-
-@media(max-width:500px){
-
-.login-box{
-padding:25px;
-border-radius:20px;
-}
-
-.logo h1{
-font-size:26px;
-}
-
-.logo .icon{
-width:75px;
-height:75px;
-}
-
-.logo .icon i{
-font-size:32px;
-}
-
-.login-btn{
-padding:14px;
-font-size:15px;
-}
-
-}
-
-</style>
+<link rel="stylesheet"
+href="css/style.css">
 
 </head>
 <body>
 
-<!-- LOGIN CONTAINER -->
+<!-- MOBILE MENU -->
 
-<div class="login-container">
+<button
+class="menu-toggle"
+onclick="toggleSidebar()">
 
-<div class="login-box">
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
 
 <!-- LOGO -->
 
@@ -211,70 +48,321 @@ font-size:15px;
 
 <h1>PAPPRITO</h1>
 
-<p>Restaurant Inventory Management System</p>
+<p>Inventory System</p>
 
 </div>
 
-<!-- FORM -->
+<!-- MENU -->
 
-<form action="dashboard.html">
+<ul class="menu">
 
-<div class="input-group">
+<li class="active">
 
-<label>Username</label>
+<a href="dashboard.html">
 
-<div class="input-box">
+<i class="fa-solid fa-chart-line"></i>
+<span>Dashboard</span>
 
-<i class="fa-solid fa-user"></i>
+</a>
 
-<input
-type="text"
-placeholder="Enter Username"
-required>
+</li>
 
-</div>
+<li>
 
-</div>
+<a href="items-masterlist.html">
 
-<div class="input-group">
+<i class="fa-solid fa-boxes-stacked"></i>
+<span>Items Masterlist</span>
 
-<label>Password</label>
+</a>
 
-<div class="input-box">
+</li>
 
-<i class="fa-solid fa-lock"></i>
+<li>
 
-<input
-type="password"
-placeholder="Enter Password"
-required>
+<a href="categories.html">
 
-</div>
+<i class="fa-solid fa-layer-group"></i>
+<span>Category</span>
 
-</div>
+</a>
 
-<button
-type="submit"
-class="login-btn">
+</li>
+
+<li>
+
+<a href="raw-materials.html">
+
+<i class="fa-solid fa-drumstick-bite"></i>
+<span>Raw Materials</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="production.html">
+
+<i class="fa-solid fa-gears"></i>
+<span>Production</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="transfer-in.html">
 
 <i class="fa-solid fa-right-to-bracket"></i>
-Login
+<span>Transfer In</span>
 
-</button>
+</a>
 
-</form>
+</li>
 
-<!-- FOOTER -->
+<li>
 
-<div class="footer">
+<a href="transfer-out.html">
 
-© 2026 PAPPRITO Inventory System
+<i class="fa-solid fa-right-from-bracket"></i>
+<span>Transfer Out</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="finished-inventory.html">
+
+<i class="fa-solid fa-burger"></i>
+<span>Finished Inventory</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="sales.html">
+
+<i class="fa-solid fa-cash-register"></i>
+<span>Sales</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="supplier.html">
+
+<i class="fa-solid fa-truck"></i>
+<span>Supplier</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="purchase.html">
+
+<i class="fa-solid fa-cart-shopping"></i>
+<span>Purchase</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="reports.html">
+
+<i class="fa-solid fa-file-lines"></i>
+<span>Reports</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="settings.html">
+
+<i class="fa-solid fa-gear"></i>
+<span>Settings</span>
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+<h1>Dashboard</h1>
+
+<div class="admin">
+
+<i class="fa-solid fa-user"></i>
+Admin
 
 </div>
 
 </div>
 
+<!-- CARDS -->
+
+<div class="cards">
+
+<!-- RAW MATERIALS -->
+
+<div class="card">
+
+<i class="fa-solid fa-box"></i>
+
+<h2 id="dashboardRawCount">
+0
+</h2>
+
+<p>Raw Materials</p>
+
 </div>
+
+<!-- PRODUCTION -->
+
+<div class="card">
+
+<i class="fa-solid fa-gears"></i>
+
+<h2 id="dashboardProductionCount">
+0
+</h2>
+
+<p>Production</p>
+
+</div>
+
+<!-- FINISHED -->
+
+<div class="card">
+
+<i class="fa-solid fa-burger"></i>
+
+<h2 id="dashboardFinishedCount">
+0
+</h2>
+
+<p>Finished Inventory</p>
+
+</div>
+
+<!-- SALES -->
+
+<div class="card">
+
+<i class="fa-solid fa-peso-sign"></i>
+
+<h2 id="dashboardSalesAmount">
+₱0
+</h2>
+
+<p>Total Sales</p>
+
+</div>
+
+</div>
+
+<!-- SYSTEM TABLE -->
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Module</th>
+<th>Status</th>
+<th>Description</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Items Masterlist</td>
+<td class="good">Connected</td>
+<td>Master item database ready.</td>
+
+</tr>
+
+<tr>
+
+<td>Raw Materials</td>
+<td class="good">Working</td>
+<td>Inventory monitoring active.</td>
+
+</tr>
+
+<tr>
+
+<td>Production</td>
+<td class="good">Connected</td>
+<td>Auto production logic enabled.</td>
+
+</tr>
+
+<tr>
+
+<td>Transfer In</td>
+<td class="good">Ready</td>
+<td>Inventory transfer workflow active.</td>
+
+</tr>
+
+<tr>
+
+<td>Sales</td>
+<td class="good">Live</td>
+<td>Sales auto deduct inventory.</td>
+
+</tr>
+
+<tr>
+
+<td>Reports</td>
+<td class="good">Ready</td>
+<td>Business reports available.</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- APP JS -->
+
+<script src="js/app.js"></script>
 
 </body>
 </html>
